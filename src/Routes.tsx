@@ -6,6 +6,7 @@ import Borrowitems from './pages/borrowitems/borrowitems';
 import Devicementainence from './pages/devicementainence/devicementainence';
 import Employeelogin from './pages/employeelogin/employeelogin';
 import Warrantyitems from './pages/warrantyitems/warrantyitems';
+import Product from './pages/stockorder/product';
 // Import other components for other pages if needed
 
 function MainRoutes() {
@@ -18,6 +19,7 @@ function MainRoutes() {
       <Route path="/employeelogin" element={<Employeelogin />} />
       <Route path="/warrantyitems" element={<Warrantyitems />} />
       {/* Add other routes for other pages if needed */}
+      <Route path="/product/:id" element={<Product/>} />
     </Routes>
   );
 }
