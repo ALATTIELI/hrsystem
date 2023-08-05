@@ -1,0 +1,56 @@
+.stock-order-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; /* Stretch items to equal height */
+}
+
+.item-card {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  width: 200px; /* Fixed width for the card */
+  height: 300px; /* Fixed height for the card */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-container {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex: 4;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%; /* Limit the image height to 70% of the card */
+  object-fit: cover; /* Make the image adjust automatically to fit within the container */
+  border-radius: 5px;
+}
+
+.name-container {
+  flex: 1; /* Name container takes 2/3 of the card's height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  margin: 0;
+}
