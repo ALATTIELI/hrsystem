@@ -1,0 +1,56 @@
+Global styles for the printout
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+  
+  /* Style for the printout container */
+  .printout-container {
+    width: 100%;
+  }
+  
+  /* Style for the shop name */
+  .shop-name {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the printout content */
+  .printout-content {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the customer reading text */
+  .customer-reading-text {
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the customer signature section */
+  .customer-signature {
+    margin-bottom: 40px;
+  }
+  
+  /* Add more styles as needed for the signature component or place for the customer to sign */
+  
