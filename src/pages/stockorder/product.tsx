@@ -1,7 +1,15 @@
+import './product.css';
+import { Link } from 'react-router-dom';
 
-export default function product() {
-    
+function Product() {
   return (
-    <div>product</div>
-  )
+    <div className="product-container">
+      <h1>Product Page</h1>
+      <Link to="/stockorder">
+        <button>Back</button>
+      </Link>
+    </div>
+  );
 }
+
+export default Product;

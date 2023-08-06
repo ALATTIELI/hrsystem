@@ -12,13 +12,13 @@ import Product from './pages/stockorder/product';
 function MainRoutes() {
   return (
     <Routes>
+      {/* Add other routes for other pages if needed */}
       <Route path="/" element={<App />} />
       <Route path="/stockorder" element={<Stockorder />} />
       <Route path="/borrowitems" element={<Borrowitems />} />
       <Route path="/devicementainence" element={<Devicementainence />} />
       <Route path="/employeelogin" element={<Employeelogin />} />
       <Route path="/warrantyitems" element={<Warrantyitems />} />
-      {/* Add other routes for other pages if needed */}
       <Route path="/product/:id" element={<Product/>} />
     </Routes>
   );
