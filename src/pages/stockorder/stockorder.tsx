@@ -38,7 +38,7 @@ function Stockorder() {
       </div>
 
       <Link to="/">
-        <button>Back to Home</button>
+        <button className="back-to-home-button">Back to Home</button>
       </Link>
     </div>
   );

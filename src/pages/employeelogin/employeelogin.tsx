@@ -6,7 +6,7 @@ function Employeelogin() {
     <div className="employee-login-container">
       <h1>Employee Login Page</h1>
       <Link to="/">
-        <button>Back to Home</button>
+        <button className="back-to-home-button">Back to Home</button>
       </Link>
     </div>
   );
