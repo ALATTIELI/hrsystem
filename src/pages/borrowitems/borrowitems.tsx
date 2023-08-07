@@ -1,14 +1,20 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
+import { ShopProvider, useShopContext } from "./shopprovider";
 import "./borrowitems.css";
 
-// Sample shop data
-const shops = [
-  { id: 1, name: "Shop A", availableQuantity: 5 },
-  { id: 2, name: "Shop B", availableQuantity: 10 },
-  { id: 3, name: "Shop C", availableQuantity: 3 },
-  // Add more shops here...
-];
+// Define the Shop type
+interface Shop {
+  id: number;
+  name: string;
+  availableQuantity: number;
+  items: Item[];
+}
+
+interface Item {
+  sku: string;
+  barcode: string;
+}
 
 function Borrowitems() {
   const [formData, setFormData] = useState({
@@ -16,9 +22,9 @@ function Borrowitems() {
     barcode: "",
   });
 
-  const [inquiryResult, setInquiryResult] = useState<
-    { shopName: string; availableQuantity: number }[]
-  >([]);
+  const { shops } = useShopContext();
+
+  const [inquiryResult, setInquiryResult] = useState<Shop[] | null>(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -37,24 +43,20 @@ function Borrowitems() {
       return;
     }
 
-    // Placeholder for simulating the inquire functionality
-    const itemExists = shops.some((shop) => shop.availableQuantity > 0);
+    // Find shops where the item with the specified SKU or Barcode is available
+    const searchTerm = formData.sku || formData.barcode;
+    const availableShops = shops.filter((shop: Shop) => {
+      return shop.items.some(
+        (item) => item.sku === searchTerm || item.barcode === searchTerm
+      );
+    });
 
-    if (itemExists) {
-      // Filter the shops based on SKU or Barcode
-      const filteredShops = shops.filter((shop) => shop.availableQuantity > 0);
-
-      // Map the data to the desired format
-      const inquiryResultData = filteredShops.map((shop) => ({
-        shopName: shop.name,
-        availableQuantity: shop.availableQuantity,
-      }));
-
-      // Update the state with the mapped data
-      setInquiryResult(inquiryResultData);
+    if (availableShops.length > 0) {
+      // Item is available in one or more shops
+      setInquiryResult(availableShops);
     } else {
-      alert("Item not found in any shop.");
-      setInquiryResult([]);
+      // Item is out of stock in all shops
+      setInquiryResult(null);
     }
   };
 
@@ -86,17 +88,32 @@ function Borrowitems() {
         <button type="submit">Inquire</button>
       </form>
 
-      {/* Display shop information boxes */}
-      {inquiryResult.length > 0 ? (
-        <div className="shop-boxes">
+      {/* Display the result */}
+      {inquiryResult ? (
+        <div className="inquiry-result">
+          <h2 className="title">Available Shops:</h2>
           {inquiryResult.map((shop) => (
-            <div className="shop-box" key={shop.shopName}>
-              <h3>{shop.shopName}</h3>
-              <p>Available Quantity: {shop.availableQuantity}</p>
+            <div key={shop.id} className="shop-box">
+              <div className="shop-info">
+                <h3>{shop.name}</h3>
+                <p>Available Quantity: {shop.availableQuantity}</p>
+              </div>
+              <div className="request-section">
+                <input
+                  type="number"
+                  placeholder="Quantity"
+                  className="quantity-input"
+                />
+                <button className="request-button">Request</button>
+              </div>
             </div>
           ))}
         </div>
-      ) : null}
+      ) : (
+        <div className="inquiry-result">
+          <h2>Item is out of stock.</h2>
+        </div>
+      )}
 
       <Link to="/">
         <button className="back-to-home-button">Back to Home</button>
@@ -105,4 +122,13 @@ function Borrowitems() {
   );
 }
 
-export default Borrowitems;
+function App() {
+  return (
+    <ShopProvider>
+      {/* ... Other components and routes ... */}
+      <Borrowitems />
+    </ShopProvider>
+  );
+}
+
+export default App;

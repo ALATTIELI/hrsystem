@@ -7,6 +7,7 @@ import Devicementainence from './pages/devicementainence/devicementainence';
 import Employeelogin from './pages/employeelogin/employeelogin';
 import Warrantyitems from './pages/warrantyitems/warrantyitems';
 import Product from './pages/stockorder/product';
+
 // Import other components for other pages if needed
 
 function MainRoutes() {
