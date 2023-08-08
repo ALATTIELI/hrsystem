@@ -1,6 +1,8 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import "./warrantyitems.css";
+import HomeIcon from "@mui/icons-material/Home"; // Import HomeIcon
+
 
 function Warrantyitems() {
   const [formData, setFormData] = useState({
@@ -93,7 +95,12 @@ function Warrantyitems() {
         <button type="submit">Submit</button>
       </form>
       <Link to="/">
-        <button className="back-to-home-button">Back to Home</button>
+        <button className="back-to-home-button">
+          <span className="home-icon">
+            <HomeIcon />
+          </span>
+          Home
+        </button>
       </Link>
     </div>
   );

@@ -1,6 +1,8 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import "./devicementainence.css";
+import HomeIcon from "@mui/icons-material/Home"; // Import HomeIcon
+
 // import ReactDOMServer from "react-dom/server";
 // import PrintPreview from "./printpreview";
 
@@ -127,7 +129,8 @@ function Devicementainence() {
 
         <div className="form-group">
           <label htmlFor="description">Description:</label>
-          <textarea className="textarea"
+          <textarea
+            className="textarea"
             id="description"
             name="description"
             required
@@ -143,7 +146,12 @@ function Devicementainence() {
       <button onClick={handlePrintPreview}>Print Preview</button> */}
 
       <Link to="/">
-        <button className="back-to-home-button">Back to Home</button>
+        <button className="back-to-home-button">
+          <span className="home-icon">
+            <HomeIcon />
+          </span>
+          Home
+        </button>
       </Link>
     </div>
   );

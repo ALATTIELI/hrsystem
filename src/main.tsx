@@ -3,10 +3,21 @@ import React from 'react';
 import "./index.css"
 import ReactDOM from 'react-dom';
 import AppRoutes from './Routes'; // Import the renamed component
+import { CartProvider } from './pages/stockorder/cartcontext'; // Import your CartProvider
+
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   <React.StrictMode>
+//     <CartProvider>
+//       <AppRoutes />
+//     </CartProvider>
+//   </React.StrictMode>
+// );
 
 ReactDOM.render(
   <React.StrictMode>
+  <CartProvider>
     <AppRoutes />
-  </React.StrictMode>,
+  </CartProvider>
+</React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,30 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-interface Item {
+interface ItemCardProps {
   id: string;
   name: string;
   photoUrl: string;
 }
 
-function ItemCard({ id, name, photoUrl }: Item) {
-  const navigate = useNavigate()
-  const onClick_func = (id: string) => {
-    navigate(`/product/${id}`)
-  };
+function ItemCard({ id, name, photoUrl }: ItemCardProps) {
   return (
-    <div
-      className="item-card"
-      onClick={() => {
-        onClick_func(id);
-      }}
-    >
-      <div className="image-container">
-        <img src={photoUrl} alt={name} />
-      </div>
-      <div className="name-container">
-        <h3>{name}</h3>
-      </div>
-    </div>
+    <Link to={`/product/${id}`} className="item-card">
+      <img src={photoUrl} alt={name} />
+      <h2>{name}</h2>
+    </Link>
   );
 }
 

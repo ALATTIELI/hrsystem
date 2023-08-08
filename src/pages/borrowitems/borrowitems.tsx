@@ -2,6 +2,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { ShopProvider, useShopContext } from "./shopprovider";
 import "./borrowitems.css";
+import HomeIcon from "@mui/icons-material/Home"; // Import HomeIcon
 
 // Define the Shop type
 interface Shop {
@@ -116,7 +117,12 @@ function Borrowitems() {
       )}
 
       <Link to="/">
-        <button className="back-to-home-button">Back to Home</button>
+        <button className="back-to-home-button">
+          <span className="home-icon">
+            <HomeIcon />
+          </span>
+          Home
+        </button>
       </Link>
     </div>
   );

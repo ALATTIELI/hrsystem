@@ -40,3 +40,47 @@
 .product-details p {
   margin: 5px;
 }
+
+.back-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Add your existing CSS styles here */
+
+.back-button-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999; /* Ensure the button is on top of other elements */
+
+}
+
+.back-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.arrow-icon {
+  margin-right: 5px; /* Adjust the spacing between icon and text */
+}
+
+.back-button:hover {
+  background-color: darkblue;
+}
+
+

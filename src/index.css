@@ -33,10 +33,11 @@ button:hover {
   background-color: darkblue;
 }
 .back-to-home-button {
+  display: flex;
+  align-items: center;
   position: fixed;
-  top: 0;
-  left: 0;
-  margin: 10px;
+  top: 20px;
+  left: 20px;
   padding: 5px 10px;
   background-color: #007bff;
   color: #fff;
@@ -48,6 +49,12 @@ button:hover {
 .back-to-home-button:hover {
   background-color: #0056b3;
 }
+/* Add this style to align the icon and text vertically */
+.back-to-home-button .home-icon {
+  vertical-align: middle;
+  margin-right: 5px; /* Adjust as needed */
+}
+
 /* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

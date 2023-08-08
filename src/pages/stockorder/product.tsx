@@ -1,5 +1,8 @@
-import { Link, useParams } from "react-router-dom";
-import "./product.css";
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import './product.css';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useCartContext } from './cartcontext'; // Import useCartContext
 
 interface ProductParams {
   id: string;
@@ -16,6 +19,7 @@ interface ProductData {
 }
 
 const products: ProductData[] = [
+  // Your product data here...
   {
     id: "1",
     productname: "Anker nano 65W",
@@ -34,7 +38,6 @@ const products: ProductData[] = [
     sku: "10171010",
     quantity: 10,
   },
-  // Add more products here...
 ];
 
 function Product() {
@@ -42,6 +45,20 @@ function Product() {
   const { id } = params;
 
   const product = products.find((item) => item.id === id);
+
+  const { addToCart } = useCartContext(); // Access addToCart function from context
+
+  const [quantity, setQuantity] = useState(1); // State to track quantity
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product?.id || '',
+      name: product?.productname || '',
+      price: product?.price || 0,
+      quantity: quantity, // Use the selected quantity
+      photoUrl: product?.photoUrl || '',
+    });
+  };
 
   if (!product) {
     return <div>Product not found</div>;
@@ -58,10 +75,27 @@ function Product() {
         <p>Price: ${product.price.toFixed(2)}</p>
         <p>SKU: {product.sku}</p>
         <p>Quantity: {product.quantity}</p>
+
+        {/* Quantity selector */}
+        <label htmlFor="quantity">Quantity:</label>
+        <input
+          type="number"
+          id="quantity"
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
+          min="1"
+          max={product.quantity}
+        />
+
+        {/* Add to Cart button */}
+        <button onClick={handleAddToCart}>Add to Cart</button>
       </div>
 
-      <Link to="/stockorder">
-        <button>Back</button>
+      <Link to="/stockorder" className="back-link">
+        <button className="back-button">
+          <ArrowBackIcon className="arrow-icon" />
+          Back
+        </button>
       </Link>
     </div>
   );
