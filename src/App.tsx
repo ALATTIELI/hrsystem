@@ -18,7 +18,7 @@ function App() {
         <Link to="/borrowitems">
           <button>Borrow Items</button>
         </Link>
-        <Link to="/devicementainence">
+        <Link to="/devicemaintenance">
           <button>Device Mentainence</button>
         </Link>
         <Link to="/employeelogin">

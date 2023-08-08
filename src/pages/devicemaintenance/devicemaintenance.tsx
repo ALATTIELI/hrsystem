@@ -1,12 +1,12 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
-import "./devicementainence.css";
+import "./devicemaintenance.css";
 import HomeIcon from "@mui/icons-material/Home"; // Import HomeIcon
 
 // import ReactDOMServer from "react-dom/server";
 // import PrintPreview from "./printpreview";
 
-function Devicementainence() {
+function devicemaintenance() {
   const [formData, setFormData] = useState({
     customerName: "",
     phoneNumber: "",
@@ -64,8 +64,8 @@ function Devicementainence() {
   // };
 
   return (
-    <div className="device-mentainence-container">
-      <h1>Warranty Items Page</h1>
+    <div className="device-maintenance-container">
+      <h1>Device Maintenance</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="customerName">Customer Name:</label>
@@ -157,4 +157,4 @@ function Devicementainence() {
   );
 }
 
-export default Devicementainence;
+export default devicemaintenance;
