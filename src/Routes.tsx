@@ -7,7 +7,10 @@ import Employeelogin from './pages/employeelogin/employeelogin';
 import Warrantyitems from './pages/warrantyitems/warrantyitems';
 import Product from './pages/stockorder/product';
 import Devicemaintenance from './pages/devicemaintenance/devicemaintenance';
-
+import Cart from './pages/stockorder/cart';
+import EmployeeList from './pages/employeelogin/employeelist';
+import { employeesData } from './pages/employeelogin/employeedata';
+import ProfilePage from './pages/employeelogin/profilepage';
 // Import other components for other pages if needed
 
 function MainRoutes() {
@@ -21,6 +24,11 @@ function MainRoutes() {
       <Route path="/employeelogin" element={<Employeelogin />} />
       <Route path="/warrantyitems" element={<Warrantyitems />} />
       <Route path="/product/:id" element={<Product/>} />
+      <Route path="/cart" element={<Cart/>} />
+      <Route path="/employee/:id" element={<ProfilePage />} /> {/* Add this route */}
+      <Route path="/employees" element={<EmployeeList employees={employeesData} />} />
+
+
     </Routes>
   );
 }

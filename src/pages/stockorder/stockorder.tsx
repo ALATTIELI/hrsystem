@@ -54,7 +54,9 @@ function Stockorder() {
       </div>
 
       {/* Display the cart */}
-      <Cart />
+      <Link to="/cart"><Cart /></Link>
+
+       <Cart />
 
       <Link to="/">
         <button className="back-to-home-button">

@@ -77,7 +77,7 @@ function Product() {
         <p>Quantity: {product.quantity}</p>
 
         {/* Quantity selector */}
-        <label htmlFor="quantity">Quantity:</label>
+        <label htmlFor="quantity">Quantity Needed:</label>
         <input
           type="number"
           id="quantity"
