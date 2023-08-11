@@ -85,7 +85,7 @@ function ProfilePage() {
             </div>
           )}
           {selectedForm === "sickLeave" && (
-            <div>
+            <div className="sick-leave-form">
               <h2>Request Sick Leave</h2>
               <form>
                 {/* Employee Name and Position */}

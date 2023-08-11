@@ -1,4 +1,6 @@
-/* ProfilePage.css */
+/* ------------------ */
+/* PROFILE PAGE STYLES */
+/* ------------------ */
 
 .profile-container {
   display: flex;
@@ -13,7 +15,6 @@
   justify-content: space-between;
   width: 100%;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
 }
 
 .employee-info {
@@ -34,33 +35,34 @@
 
 .content {
   display: flex;
-  width: 100%;
-  margin-top: 20px;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .left-side {
-  flex: 1;
-  padding-right: 20px;
+  display: flex;
+  flex-direction: column;  /* This makes sure that the children are stacked vertically */
+  align-items: flex-start; /* Aligns the buttons to the left side */
+  gap: 10px;               /* Space between buttons */
+  max-width: 200px;  /* Adjust this as per your requirement */
+  overflow: hidden;
+
 }
 
-.right-side {
-  flex: 2;
+
+.right-side { 
+  flex: 1;
   border: 1px solid #ccc;
   padding: 20px;
 }
 
-/* ProfilePage.css */
-
-/* ... (existing styles) ... */
+/* ------------------ */
+/* COMMON FORM STYLES  */
+/* ------------------ */
 
 .form {
-  display: none;
   padding: 20px;
-  text-align: center; /* Center form content */
-}
-
-.form.active {
-  display: block;
+  text-align: center; 
 }
 
 .form h2 {
@@ -103,25 +105,57 @@
   background-color: #0056b3;
 }
 
-/* Adjusted styles for "Request Sick Leave" form */
-.form .employee-info {
+/* ------------------------ */
+/* SICK LEAVE FORM SPECIFIC */
+/* ------------------------ */
+
+.sick-leave-form {
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.sick-leave-form h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sick-leave-form form {
+  display: grid;
+  gap: 15px; /* Spacing between form elements */
+}
+
+.sick-leave-form .employee-info-form,
+.sick-leave-form .date-range {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide into two equal columns */
+  gap: 15px; /* Spacing between columns */
+}
+
+.sick-leave-form label {
   display: flex;
-  justify-content: space-between;
-  align-items: center; /* Center vertically */
-  margin-bottom: 10px;
+  flex-direction: column;
 }
 
-.form .employee-info label {
-  width: 48%;
+.sick-leave-form input,
+.sick-leave-form select,
+.sick-leave-form textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.form .date-range {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Center vertically */
+.sick-leave-form button {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.form .date-range label {
-  width: 48%;
+.sick-leave-form button:hover {
+  background-color: #0056b3;
 }
 

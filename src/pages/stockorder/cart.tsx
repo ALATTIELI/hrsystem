@@ -1,16 +1,21 @@
 // Cart.tsx
+import { Link } from 'react-router-dom';
 import { useCartContext } from './cartcontext';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; // Import the cart icon from MUI
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Import the back icon from MUI
 
 function Cart() {
-  const { cart } = useCartContext();
+  useCartContext();
 
   return (
     <div className="cart-container">
-      <ShoppingCartIcon className="cart-icon" />
-      <div className="cart-count">{cart.length}</div> {/* Display the number of items in the cart */}
       {/* Add logic to display the cart items */}
       {/* You can map through the cart items and display them here */}
+      <Link to="/stockorder" className="back-link">
+        <button className="back-button">
+          <ArrowBackIcon className="arrow-icon" />
+          Back
+        </button>
+      </Link>
     </div>
   );
 }
