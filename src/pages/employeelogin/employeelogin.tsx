@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import { employeesData } from './employeedata'; // Import your employee data
+import "./employeelogin.css"
 
 function Employeelogin() {
   const [username, setUsername] = useState('');
