@@ -1,50 +1,67 @@
-/* employeelist.css */
-.employee-list {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .employee-list h2 {
-    margin-bottom: 10px;
-    font-size: 30px;
-    font-weight: bold;
-    color:white;
-    
-    
-  }
-  
-  .employee-box {
-    border: 1px solid #007bff;
-    border-radius: 8px;
-    padding: 15px; /* Increase padding for more space */
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    width: 400px; /* Increase width */
-    background-color: #007bff;
-  }
-  
-  .employee-box img {
-    width: 100px; /* Increase image size */
-    height: 100px; /* Increase image size */
-    border-radius: 50%;
-    margin-right: 25px;
-  }
-  
-  .employee-box a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Align items on the right side */
-  }
-  
-  .employee-info {
-    text-align: left; /* Align text to the left */
-    line-height: normal!important;
-    overflow: hidden;
-    max-width: calc(69% - 1rem);
-  }
-  
+/* .employee-list {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.employee-list h2 {
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.employee-box {
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  width: 400px;
+  background-color: #007bff;
+}
+
+.employee-box img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 25px;
+}
+
+.employee-box .employee-info {
+  text-align: left;
+  line-height: normal !important;
+  overflow: hidden;
+  max-width: calc(69% - 1rem);
+}
+
+.employee-box input[type="text"],
+.employee-box input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.employee-box button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.employee-box button:hover {
+  background-color: #0056b3;
+}
+
+.employee-link {
+  text-decoration: none;
+} */

@@ -5,10 +5,7 @@ import { employeesData } from "./employeedata";
 import { useState } from "react";
 
 function ProfilePage() {
-  // Get the employee ID from the URL params
   const { id } = useParams();
-
-  // Fetch employee data based on the ID
   const selectedEmployee = id
     ? employeesData.find((employee) => employee.id === parseInt(id))
     : undefined;

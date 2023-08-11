@@ -11,6 +11,8 @@ function devicemaintenance() {
     customerName: "",
     phoneNumber: "",
     device: "",
+    price: "",
+    serialNumber: "",
     repairType: "Repair the device",
     dateReceived: "",
   });
@@ -30,6 +32,10 @@ function devicemaintenance() {
     // Handle form submission here (e.g., sending data to the server)
     console.log("Form data submitted:", formData);
   };
+
+  function handleNumericInput(_event: FormEvent<HTMLInputElement>): void {
+    throw new Error("Function not implemented.");
+  }
 
   // const handlePrint = () => {
   //   const printWindow = window.open("", "_blank");
@@ -86,6 +92,7 @@ function devicemaintenance() {
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleChange}
+            onInput={handleNumericInput} // Add this line to handle numeric input
             required
           />
         </div>
@@ -98,6 +105,28 @@ function devicemaintenance() {
             value={formData.device}
             onChange={handleChange}
             required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="price">Price:</label>
+          <input
+            type="text"
+            id="price"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            onInput={handleNumericInput} // Add this line to handle numeric input
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="serialNumber">Serial Number:</label>
+          <input
+            type="text"
+            id="serialNumber"
+            name="serialNumber"
+            value={formData.serialNumber}
+            onChange={handleChange}
           />
         </div>
         <div className="form-group">

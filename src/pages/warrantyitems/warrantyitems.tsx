@@ -47,7 +47,7 @@ function Warrantyitems() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="invoiceNumber">Invoice Number:</label>
+          <label htmlFor="invoiceNumber">Invoice Number (Reference): </label>
           <input
             type="text"
             id="invoiceNumber"
@@ -58,7 +58,7 @@ function Warrantyitems() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="phoneNumber">Phone Number:</label>
+          <label htmlFor="phoneNumber"> Costumer Phone Number:</label>
           <input
             type="tel"
             id="phoneNumber"
