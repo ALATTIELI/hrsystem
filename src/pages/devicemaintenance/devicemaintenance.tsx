@@ -33,8 +33,14 @@ function devicemaintenance() {
     console.log("Form data submitted:", formData);
   };
 
-  function handleNumericInput(_event: FormEvent<HTMLInputElement>): void {
-    throw new Error("Function not implemented.");
+  function handleNumericInput(
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void {
+    const value = event.target.value;
+    if (!/^[0-9]*$/.test(value)) {
+      // If the value contains non-numeric characters, reset to the previous value or empty string.
+      event.target.value = value.replace(/[^0-9]/g, "");
+    }
   }
 
   // const handlePrint = () => {
@@ -92,9 +98,13 @@ function devicemaintenance() {
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleChange}
+            pattern="^[0-9]*$"
             onInput={handleNumericInput} // Add this line to handle numeric input
             required
           />
+          <small className="form-text text-muted">
+            Only numbers are allowed.
+          </small>
         </div>
         <div className="form-group">
           <label htmlFor="device">Device:</label>
@@ -115,9 +125,13 @@ function devicemaintenance() {
             name="price"
             value={formData.price}
             onChange={handleChange}
+            pattern="^[0-9]*$"
             onInput={handleNumericInput} // Add this line to handle numeric input
             required
           />
+          <small className="form-text text-muted">
+            Only numbers are allowed.
+          </small>
         </div>
         <div className="form-group">
           <label htmlFor="serialNumber">Serial Number:</label>
