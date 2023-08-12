@@ -76,3 +76,23 @@ button {
 }
 
 /* If there are more specific styles for your forms or other elements, you can add them below. */
+.fixed-buttons {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.fixed-buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fixed-buttons button:hover {
+  background-color: #e0e0e0;
+}
