@@ -73,7 +73,6 @@ button {
   margin-bottom: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 200px;
 }
 
 /* If there are more specific styles for your forms or other elements, you can add them below. */

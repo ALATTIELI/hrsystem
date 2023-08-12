@@ -1,5 +1,5 @@
-import React from 'react';
-import './LeaveRequest.css';
+import React from "react";
+import "./LeaveRequest.css";
 
 interface LeaveRequestProps {
   selectedEmployee?: {
@@ -9,6 +9,8 @@ interface LeaveRequestProps {
 }
 
 const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
+    console.log(selectedEmployee);  // <-- Add this line here
+
   return (
     <div className="sick-leave-form">
       <h2>Request Sick Leave</h2>
@@ -17,19 +19,11 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
         <div className="employee-info-form">
           <label>
             Employee Name:
-            <input
-              type="text"
-              value={selectedEmployee?.name}
-              readOnly
-            />
+            <input type="text" value={selectedEmployee?.name} readOnly />
           </label>
           <label>
             Position:
-            <input
-              type="text"
-              value={selectedEmployee?.position}
-              readOnly
-            />
+            <input type="text" value={selectedEmployee?.position} readOnly />
           </label>
         </div>
 
@@ -77,6 +71,6 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
       </form>
     </div>
   );
-}
+};
 
 export default LeaveRequest;

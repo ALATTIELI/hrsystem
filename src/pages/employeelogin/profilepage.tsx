@@ -68,7 +68,8 @@ function ProfilePage() {
 
         {/* Right side: Form */}
         <div className="right-side">
-          {selectedForm === "leaverequest" && <LeaveRequest selectedEmployee={selectedEmployee} />}
+          {/* Display form based on selected button */}
+          {selectedForm === "Leave Request" && <LeaveRequest selectedEmployee={selectedEmployee} />}
           {/* Add more form components as needed */}
         </div>
       </div>
