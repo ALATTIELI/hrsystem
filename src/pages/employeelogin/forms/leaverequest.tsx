@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./LeaveRequest.css";
+import { employeesData } from "../employeedata";
 
-interface LeaveRequestProps {
-  selectedEmployee?: {
-    name?: string;
-    position?: string;
-  };
+interface Employee {
+  id: number;
+  name: string;
+  position: string;
+  branch: string;
 }
 
+interface LeaveRequestProps {
+  selectedEmployee?: Employee;
+}
+// Somewhere above in your LeaveRequest.tsx or in a separate utility file
+
+const getSubstituteEmployees = (currentEmployeeId: number, branch: string) => {
+  return employeesData.filter(employee => 
+    employee.id !== currentEmployeeId && employee.branch === branch
+  );
+};
+
 const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
-    console.log(selectedEmployee);  // <-- Add this line here
+  const [substituteEmployees, setSubstituteEmployees] = useState<Employee[]>([]);
+
+  useEffect(() => {
+    if (selectedEmployee) {
+      const substitutes = getSubstituteEmployees(selectedEmployee.id, selectedEmployee.branch);
+      setSubstituteEmployees(substitutes);
+    }
+  }, [selectedEmployee]);
+
+  console.log(selectedEmployee); // <-- Add this line here
 
   return (
     <div className="sick-leave-form">
@@ -36,6 +57,20 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
             {/* Add more supervisor options as needed */}
           </select>
         </label>
+
+        {/* Substitute Employee Dropdown */}
+        {selectedEmployee?.branch && (
+          <label>
+            Substitute Employee:
+            <select>
+              {substituteEmployees.map((employee) => (
+                <option key={employee.id} value={employee.id}>
+                  {employee.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
 
         {/* Type of Absence Request */}
         <label>

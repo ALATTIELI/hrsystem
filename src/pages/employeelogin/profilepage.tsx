@@ -15,7 +15,7 @@ function ProfilePage() {
   const [selectedForm, setSelectedForm] = useState<string | null>(null);
 
   const handleButtonClick = (formName: string) => {
-    console.log("Button clicked with name:", formName);  // Log here
+    console.log("Button clicked with name:", formName);  // This log remains the same.
     setSelectedForm(formName);
   };
 
@@ -47,20 +47,14 @@ function ProfilePage() {
         <div className="left-side">
           {/* Display specific buttons based on employee's position */}
           {selectedEmployee && positionButtons[selectedEmployee.position]?.map((buttonName) => (
-            <button key={buttonName} onClick={() => {
-                console.log("Button clicked:", buttonName);  // Log directly here
-                handleButtonClick(buttonName);
-            }}>
+            <button key={buttonName} onClick={() => handleButtonClick(buttonName)}>
               {buttonName}
             </button>
           ))}
           
           {/* Display common buttons for all positions */}
           {commonButtons.map((buttonName) => (
-            <button key={buttonName} onClick={() => {
-                console.log("Common button clicked:", buttonName);  // Log directly here
-                handleButtonClick(buttonName);
-            }}>
+            <button key={buttonName} onClick={() => handleButtonClick(buttonName)}>
               {buttonName}
             </button>
           ))}
