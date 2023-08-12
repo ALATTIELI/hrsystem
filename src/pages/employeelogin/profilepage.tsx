@@ -3,7 +3,7 @@ import "./ProfilePage.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { employeesData } from "./employeedata";
 import { useState } from "react";
-import { commonButtons, positionButtons } from './buttonconfig';
+import { commonButtons, positionButtons } from "./buttonconfig";
 import LeaveRequest from "./forms/leaverequest";
 
 function ProfilePage() {
@@ -20,7 +20,7 @@ function ProfilePage() {
   const [isBreakStarted, setIsBreakStarted] = useState(false);
 
   const handleButtonClick = (formName: string) => {
-    console.log("Button clicked with name:", formName);  
+    console.log("Button clicked with name:", formName);
     setSelectedForm(formName);
   };
 
@@ -51,8 +51,6 @@ function ProfilePage() {
     // Example: useHistory().push('/login');
   };
 
-
-
   return (
     <div className="profile-container">
       {/* Header */}
@@ -71,17 +69,16 @@ function ProfilePage() {
         </div>
         {/* Add Start and End break buttons */}
         <div className="profile-container">
-            {/* ... other divs */}
-            <div className="fixed-buttons">
-                <button onClick={toggleBreak}>
-                    {isBreakStarted ? "End Break" : "Start Break"}
-                </button>
-                <button onClick={handleLogout}>Logout</button>
-            </div>
+          {/* ... other divs */}
+          <div className="fixed-buttons">
+            <button onClick={toggleBreak}>
+              {isBreakStarted ? "End Break" : "Start Break"}
+            </button>
+            <button onClick={handleLogout}>Logout</button>
+          </div>
         </div>
 
-      {/* Logout Button */}
-      <button onClick={handleLogout}>Logout</button>
+        {/* Logout Button */}
         <Link to="/employeelogin" className="back-button">
           <ArrowBackIcon className="arrow-icon" />
           Back
@@ -93,15 +90,22 @@ function ProfilePage() {
         {/* Left side: Buttons */}
         <div className="left-side">
           {/* Display specific buttons based on employee's position */}
-          {selectedEmployee && positionButtons[selectedEmployee.position]?.map((buttonName) => (
-            <button key={buttonName} onClick={() => handleButtonClick(buttonName)}>
-              {buttonName}
-            </button>
-          ))}
-          
+          {selectedEmployee &&
+            positionButtons[selectedEmployee.position]?.map((buttonName) => (
+              <button
+                key={buttonName}
+                onClick={() => handleButtonClick(buttonName)}
+              >
+                {buttonName}
+              </button>
+            ))}
+
           {/* Display common buttons for all positions */}
           {commonButtons.map((buttonName) => (
-            <button key={buttonName} onClick={() => handleButtonClick(buttonName)}>
+            <button
+              key={buttonName}
+              onClick={() => handleButtonClick(buttonName)}
+            >
               {buttonName}
             </button>
           ))}
@@ -110,7 +114,9 @@ function ProfilePage() {
         {/* Right side: Form */}
         <div className="right-side">
           {/* Display form based on selected button */}
-          {selectedForm === "Leave Request" && <LeaveRequest selectedEmployee={selectedEmployee} />}
+          {selectedForm === "Leave Request" && (
+            <LeaveRequest selectedEmployee={selectedEmployee} />
+          )}
           {/* Add more form components as needed */}
         </div>
       </div>
