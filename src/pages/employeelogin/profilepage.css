@@ -1,20 +1,23 @@
-/* ------------------ */
-/* PROFILE PAGE STYLES */
-/* ------------------ */
+/* Basic resets for margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
 }
 
 .header-profile-page {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: 10px;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .employee-info {
@@ -23,139 +26,54 @@
 }
 
 .employee-image img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-right: 10px;
+  border-radius: 50%; /* Circle shape */
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.employee-details h1 {
+  font-size: 24px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.employee-details p {
+  color: white;
 }
 
 .arrow-icon {
   font-size: 24px;
+  margin-right: 10px;
 }
 
 .content {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  margin-top: 30px;
 }
 
 .left-side {
-  display: flex;
-  flex-direction: column;  /* This makes sure that the children are stacked vertically */
-  align-items: flex-start; /* Aligns the buttons to the left side */
-  gap: 10px;               /* Space between buttons */
-  max-width: 200px;  /* Adjust this as per your requirement */
-  overflow: hidden;
-
-}
-
-
-.right-side { 
   flex: 1;
-  border: 1px solid #ccc;
-  padding: 20px;
+  padding-right: 30px;
 }
 
-/* ------------------ */
-/* COMMON FORM STYLES  */
-/* ------------------ */
-
-.form {
-  padding: 20px;
-  text-align: center; 
+.right-side {
+  flex: 2;
+  padding-left: 30px;
 }
 
-.form h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.form label {
+button {
   display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.form input,
-.form textarea,
-.form select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form select,
-.form textarea {
-  cursor: pointer;
-}
-
-.form button {
   background-color: #007bff;
   color: #fff;
+  padding: 10px 20px;
   border: none;
-  padding: 10px 15px;
   border-radius: 4px;
-  font-size: 14px;
+  margin-bottom: 10px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  width: 200px;
 }
 
-.form button:hover {
-  background-color: #0056b3;
-}
-
-/* ------------------------ */
-/* SICK LEAVE FORM SPECIFIC */
-/* ------------------------ */
-
-.sick-leave-form {
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.sick-leave-form h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.sick-leave-form form {
-  display: grid;
-  gap: 15px; /* Spacing between form elements */
-}
-
-.sick-leave-form .employee-info-form,
-.sick-leave-form .date-range {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Divide into two equal columns */
-  gap: 15px; /* Spacing between columns */
-}
-
-.sick-leave-form label {
-  display: flex;
-  flex-direction: column;
-}
-
-.sick-leave-form input,
-.sick-leave-form select,
-.sick-leave-form textarea {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.sick-leave-form button {
-  align-self: flex-end;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.sick-leave-form button:hover {
-  background-color: #0056b3;
-}
-
+/* If there are more specific styles for your forms or other elements, you can add them below. */

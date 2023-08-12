@@ -1,0 +1,75 @@
+/* Styling for the sick-leave-form */
+.sick-leave-form {
+    font-family: Arial, sans-serif;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sick-leave-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.sick-leave-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-info-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.employee-info-form label {
+    width: 48%; /* Slightly less than half to accommodate margins */
+}
+
+.date-range {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.date-range label {
+    width: 48%; /* Slightly less than half to accommodate margins */
+}
+
+.sick-leave-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.sick-leave-form input,
+.sick-leave-form select,
+.sick-leave-form textarea {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.sick-leave-form button {
+    background-color: #2196F3;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    align-self: center; /* Center the button in case the form width is too big */
+}
+
+.sick-leave-form button:hover {
+    background-color: #1976D2;
+}
