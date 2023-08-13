@@ -5,6 +5,7 @@ import { employeesData } from "./employeedata";
 import { useState } from "react";
 import { commonButtons, positionButtons } from "./buttonconfig";
 import LeaveRequest from "./forms/leaverequest";
+import SalaryCertificate from "./forms/ salarycertificate";
 
 function ProfilePage() {
   const { id } = useParams();
@@ -116,6 +117,9 @@ function ProfilePage() {
           {/* Display form based on selected button */}
           {selectedForm === "Leave Request" && (
             <LeaveRequest selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Salary Certificate" && (
+            <SalaryCertificate selectedEmployee={selectedEmployee} />
           )}
           {/* Add more form components as needed */}
         </div>

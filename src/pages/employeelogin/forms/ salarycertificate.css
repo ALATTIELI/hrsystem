@@ -1,0 +1,62 @@
+.salary-certificate-form {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.date {
+    float: right;
+    color: #007bff;
+}
+
+.text-center {
+    text-align: center;
+    color: #007bff;
+}
+
+.double-gap {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.salary-certificate-form .info-pair {
+    display: flex;
+    flex-direction: column;  
+    margin-bottom: 8px;
+    color: red;    
+}
+
+.salary-certificate-form .label {
+    margin-bottom: 4px;    
+    font-weight: bold;      
+    color: red;            
+}
+
+p {
+    margin: 0;              /* Removes default margins from <p> elements */
+}
+
+
+.footer-signatures {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.footer-signatures > div {
+    border-top: 1px solid #000;
+    padding-top: 10px;
+    width: 45%; /* Adjust this value if needed to make signatures fit */
+    text-align: center;
+}
+
+.gap {
+    margin-top: 20px;
+}
+
+/* Additional styling for a more polished look */
+
+
