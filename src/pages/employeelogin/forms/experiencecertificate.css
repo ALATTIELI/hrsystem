@@ -1,0 +1,64 @@
+.experience-certificate-form {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.intro {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: 20px;
+    color: blue;
+}
+
+.employment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  /* Adjusts space between child elements */
+}
+
+.position {
+    font-weight: bold;
+    color: white;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjusts space between the hiring date and end date */
+}
+
+.label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: white;
+}
+
+
+
+.performance-statement {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.disclaimer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: red;
+}
+
+.company-management {
+    margin-top: 200px;
+    font-weight: bold;
+}

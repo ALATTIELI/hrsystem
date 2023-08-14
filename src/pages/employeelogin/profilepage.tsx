@@ -7,6 +7,7 @@ import { commonButtons, positionButtons } from "./buttonconfig";
 import LeaveRequest from "./forms/leaverequest";
 import SalaryCertificate from "./forms/ salarycertificate";
 import VacationAllowanceRequest from "./forms/vacationallowancerequest";
+import ExperienceCertificate from "./forms/experiencecertificate";
 
 function ProfilePage() {
   const { id } = useParams();
@@ -124,6 +125,9 @@ function ProfilePage() {
           )}
           {selectedForm === "Vacation Allowance Request" && (
             <VacationAllowanceRequest selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Experience Certificate" && (
+            <ExperienceCertificate selectedEmployee={selectedEmployee} />
           )}
           {/* Add more form components as needed */}
         </div>

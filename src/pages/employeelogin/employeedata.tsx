@@ -4,7 +4,7 @@ export const employeesData = [
     id: 1,
     name: "ADEL ALATTIELI",
     position: "Software Engineer",
-    photoUrl: "./src/assets/adel.jpeg",
+    photoUrl: "/assets/adel.jpeg",
     username: "alattieli", // Add username field
     password: "12345",
     branch: "MBZ",
@@ -18,7 +18,7 @@ export const employeesData = [
     id: 2,
     name: "Jane Smith",
     position: "UI/UX Designer",
-    photoUrl: "./images/ven.jpg",
+    photoUrl: "/assets/ven.jpg",
     username: "jane", // Add username field
     password: "1234",
     branch: "MBZ",
