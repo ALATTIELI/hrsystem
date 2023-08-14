@@ -17,14 +17,14 @@ const items: Item[] = [
   {
     id: "1",
     name: "Anker nano 65W",
-    photoUrl: "./src/assets/ankernano65w.jpeg",
+    photoUrl: "/assets/ankernano65w.jpeg",
     price: 29.99, // Replace with the actual price
     quantity: 8,
   },
   {
     id: "2",
     name: "Power Flow 3 Cable",
-    photoUrl: "./src/assets/powerflow3.jpeg",
+    photoUrl: "/assets/powerflow3.jpeg",
     price: 29.99, // Replace with the actual price
     quantity: 10,
   },
