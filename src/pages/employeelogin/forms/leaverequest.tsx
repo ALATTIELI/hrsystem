@@ -62,7 +62,6 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
 
     // ... log other fields as needed
   };
-  console.log(selectedEmployee);
 
   return (
     <div className="sick-leave-form">
