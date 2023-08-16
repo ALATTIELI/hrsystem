@@ -1,13 +1,44 @@
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "./product.css";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useCartContext } from "./cartcontext"; // Import useCartContext
-
+import { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import './product.css';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useCartContext } from './cartcontext'; // Import useCartContext
 
 interface ProductParams {
   id: string;
 }
+
+interface ProductData {
+  id: string;
+  productname: string;
+  description: string;
+  price: number;
+  photoUrl: string;
+  sku: string;
+  quantity: number;
+}
+
+const products: ProductData[] = [
+  // Your product data here...
+  {
+    id: "1",
+    productname: "Anker nano 65W",
+    description: "Fast charger with 65W power output.",
+    price: 29.99,
+    photoUrl: "/src/assets/ankernano65w.jpeg",
+    sku: "10171009",
+    quantity: 10,
+  },
+  {
+    id: "2",
+    productname: "Power Flow 3 Cable",
+    description: "High-speed charging cable for various devices.",
+    price: 12.99,
+    photoUrl: "/src/assets/powerflow3.jpeg",
+    sku: "10171010",
+    quantity: 10,
+  },
+];
 
 function Product() {
   const params = useParams() as unknown as ProductParams;
@@ -21,11 +52,11 @@ function Product() {
 
   const handleAddToCart = () => {
     addToCart({
-      id: product?.id || "",
-      name: product?.productname || "",
+      id: product?.id || '',
+      name: product?.productname || '',
       price: product?.price || 0,
       quantity: quantity, // Use the selected quantity
-      photoUrl: product?.photoUrl || "",
+      photoUrl: product?.photoUrl || '',
     });
   };
 
@@ -43,7 +74,7 @@ function Product() {
         <p>{product.description}</p>
         <p>Price: ${product.price.toFixed(2)}</p>
         <p>SKU: {product.sku}</p>
-        <p>Quantity Available: {product.availableQuantity}</p>
+        <p>Quantity: {product.quantity}</p>
 
         {/* Quantity selector */}
         <label htmlFor="quantity">Quantity Needed:</label>
@@ -53,7 +84,7 @@ function Product() {
           value={quantity}
           onChange={(e) => setQuantity(Number(e.target.value))}
           min="1"
-          max={product.availableQuantity}
+          max={product.quantity}
         />
 
         {/* Add to Cart button */}
