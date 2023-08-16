@@ -1,0 +1,61 @@
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px 15px;
+    border: 1px solid #d4d4d4;
+}
+
+th {
+    background-color: #2C3E50;
+    color: white;
+    font-weight: 500;
+}
+
+input[type="time"] {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 90%; 
+    box-sizing: border-box;
+    transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="time"]:focus {
+    border: 1px solid #3498DB; 
+    box-shadow: 0 0 3px #3498DB;
+}
+
+button[type="submit"] {
+    background-color: #3498DB;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    align-self: center;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980B9;
+}
+
+button[type="submit"]:active {
+    background-color: #2C3E50;
+}

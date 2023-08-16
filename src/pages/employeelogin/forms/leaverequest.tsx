@@ -121,6 +121,7 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
             <option value="timeOff">Time Off Without Pay</option>
             <option value="personal">Personal</option>
             <option value="maternity">Maternity/Paternity</option>
+            <option value="annual leave">Annual Leave</option>
             <option value="others">Others - Please Specify</option>
           </select>
         </label>

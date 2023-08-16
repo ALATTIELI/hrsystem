@@ -17,7 +17,7 @@ export const employeesData = [
   {
     id: 2,
     name: "Jane Smith",
-    position: "UI/UX Designer",
+    position: "BRANCH SUPERVISOR",
     photoUrl: "/assets/ven.jpg",
     username: "jane", // Add username field
     password: "1234",
@@ -49,7 +49,7 @@ export const employeesData = [
     photoUrl: "./images/ven.jpg",
     username: "adnan", // Add username field
     password: "1234",
-    branch: "MBZ",
+    branch: "Galleria",
     nationality: "Philippines",
     idnumber: "784-1998-8161872-4",
     passportnumber: "Q9776191289",
