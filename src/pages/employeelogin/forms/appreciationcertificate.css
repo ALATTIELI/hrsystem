@@ -1,0 +1,104 @@
+.certificate-container {
+  width: 80%;
+  max-width: 800px;
+  padding: 30px;
+  height: 750px;
+  margin: 50px auto;
+  background: linear-gradient(135deg, #f8f8f8, #e7e7e7);
+  text-align: center;
+  position: relative;
+  background-size: 100px 100px;
+  background-image: 
+  linear-gradient(to right, #f8f8f8 1px, transparent 1px),
+  linear-gradient(to bottom, #f8f8f8 1px, #e7e7e7 1px); 
+}
+.certificate-container::before,
+.certificate-container::after,
+.corner-left::before,
+.corner-right::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: #007bff;
+  
+}
+
+/* Top-left corner */
+.certificate-container::before {
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* Top-right corner */
+.certificate-container::after {
+  top: 0;
+  right: 0;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+/* Bottom-left corner */
+.corner-left::before {
+  bottom: 0;
+  left: 0;
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+
+/* Bottom-right corner */
+.corner-right::after {
+  bottom: 0;
+  right: 0;
+  clip-path: polygon(100% 100%, 100% 0, 0 100%);
+}
+
+.company-logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: black;
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+p {
+  color: #555;
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+/* ... existing styles ... */
+
+.certificate-container {
+  position: relative;
+  /* ... other styles ... */
+}
+
+.bold-text {
+  font-weight: bold;
+}
+.bold-text-n {
+  text-shadow: 5px 5px 10px #007bff;
+}
+
+.name {
+  text-transform: uppercase;
+  border-bottom: 1px dotted #444;
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.footer-texts {
+  position: absolute;
+  left: 45px;
+  bottom: 20px;
+}
+/* ... existing styles ... */
+
+.margin-top {
+  margin-top: 30px; /* adjust this value as per your requirement */
+  text-align: left; /* make sure the text is not centered */
+}
