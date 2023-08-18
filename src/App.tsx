@@ -1,11 +1,18 @@
 // src/App.tsx
-import './App.css'; // Import the CSS file
-import { Link } from 'react-router-dom';
+import "./App.css"; // Import the CSS file
+import { Link } from "react-router-dom";
 
 function App() {
   return (
     <div className="container">
       <div className="header">
+        <div>
+          <img
+            src="/assets/logo1.png"
+            alt="Company Logo"
+            className="company-logo"
+          />
+        </div>
         <h1> Prestige HR System </h1>
       </div>
       <div className="button-container">
