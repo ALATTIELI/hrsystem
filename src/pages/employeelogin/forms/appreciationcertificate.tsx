@@ -40,7 +40,7 @@ const AppreciationCertificate: React.FC<Props> = ({ selectedEmployee }) => {
 
       <p className="bold-text name">To: {selectedEmployee.name}</p>
       <p className="bold-text">
-        For his efforts in {selectedEmployee.branch} branch and hard work
+        For his efforts as A {selectedEmployee.position} in {selectedEmployee.branch} branch and hard work
       </p>
 
       <div className="footer-texts">

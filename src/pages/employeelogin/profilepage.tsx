@@ -11,6 +11,7 @@ import ExperienceCertificate from "./forms/experiencecertificate";
 import EmployeesWeeklySchedule from "./forms/employeesweeklyschedule";
 import BranchSupervisorChecklist from "./forms/branchsupervisorchecklist";
 import AppreciationCertificate from "./forms/appreciationcertificate";
+import WarningLetter from "./forms/warningletter";
 
 function ProfilePage() {
   const { id } = useParams();
@@ -141,6 +142,9 @@ function ProfilePage() {
             )}
           {selectedForm === "Appreciation Certificate" && selectedEmployee && (
             <AppreciationCertificate selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Warning Letter" && selectedEmployee && (
+            <WarningLetter selectedEmployee={selectedEmployee} />
           )}
 
           {/* Add more form components as needed */}

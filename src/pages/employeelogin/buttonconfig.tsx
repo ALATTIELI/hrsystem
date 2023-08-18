@@ -21,7 +21,7 @@ export const positionButtons: { [key: string]: string[] } = {
   "BRANCH SUPERVISOR": [
     "Employees Weekly Schedule",
     "Branch Supervisor Checklist",
-    "Warning Letter Issue Form",
+    "Warning Letter",
     "Appreciation Certificate",
   ],
 
