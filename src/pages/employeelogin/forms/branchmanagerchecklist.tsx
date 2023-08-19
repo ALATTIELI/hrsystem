@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./branchsupervisorchecklist.css";
+import "./branchmanagerchecklist.css";
 import { employeesData } from "../employeedata";
 
-interface BranchSupervisorChecklistProps {
+interface BranchManagerChecklistProps {
   selectedEmployee: {
     id: number;
     name: string;
@@ -19,7 +19,7 @@ interface BranchSupervisorChecklistProps {
   };
 }
 
-const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
+const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = ({
   selectedEmployee,
 }) => {
   // Component logic
@@ -30,31 +30,12 @@ const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
     (employee) => employee.branch === selectedBranch
   );
 
-  const addInvoiceRow = () => {
-    setInvoices([...invoices, { number: "", note: "" }]);
-  };
-  const [invoices, setInvoices] = useState([{ number: "", note: "" }]);
-
-  const deleteInvoiceRow = (indexToDelete: number) => {
-    setInvoices((prevInvoices) =>
-      prevInvoices.filter((_, index) => index !== indexToDelete)
-    );
-  };
-
-  const handleInvoiceChange = (
-    index: number,
-    field: "number" | "note",
-    value: string
-  ) => {
-    const newInvoices = [...invoices];
-    newInvoices[index][field] = value;
-    setInvoices(newInvoices);
-  };
-
-  const [products, setProducts] = useState([{ productName: "", reason: "" }]);
+  const [products, setProducts] = useState([
+    { productName: "", reason: "", barcode: "" },
+  ]);
 
   const addProductRow = () => {
-    setProducts([...products, { productName: "", reason: "" }]);
+    setProducts([...products, { productName: "", reason: "", barcode: "" }]);
   };
 
   const handleProductChange = (
@@ -86,7 +67,7 @@ const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
 
   return (
     <form>
-      <h3>Branch Supervisor Checklist Form Weekly</h3>
+      <h3>Branch Manager Checklist Form Weekly</h3>
 
       <table className="evaluation-table">
         <thead>
@@ -157,7 +138,7 @@ const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
             </td>
           </tr>
           <tr>
-            <td>Personal Cleanliness</td>
+            <td>Personal Hygiene</td>
             <td>
               <input
                 type="radio"
@@ -186,6 +167,7 @@ const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
           <thead>
             <tr>
               <th>Suspended Products</th>
+              <th>Barcode</th>
               <th>Reason and Action Taken</th>
               <th>Action</th>
             </tr>
@@ -202,6 +184,15 @@ const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
                       handleProductChange(index, "productName", e.target.value)
                     }
                   />
+                </td>
+                <td>
+                  <textarea
+                    value={product.barcode}
+                    placeholder={`barcode ${index + 1}`}
+                    onChange={(e) =>
+                      handleProductChange(index, "barcode", e.target.value)
+                    }
+                  ></textarea>
                 </td>
                 <td>
                   <textarea
@@ -223,53 +214,6 @@ const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
         </table>
         <button type="button" onClick={addProductRow}>
           Add Product
-        </button>
-      </div>
-
-      <div className="invoices-section">
-        <h4>Invoices that have been audited:</h4>
-        <table>
-          <thead>
-            <tr>
-              <th>Number</th>
-              <th>Notes</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {invoices.map((invoice, index) => (
-              <tr key={index}>
-                <td>
-                  <input
-                    type="number"
-                    value={invoice.number}
-                    placeholder="Number"
-                    onChange={(e) =>
-                      handleInvoiceChange(index, "number", e.target.value)
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={invoice.note}
-                    placeholder="Notes"
-                    onChange={(e) =>
-                      handleInvoiceChange(index, "note", e.target.value)
-                    }
-                  />
-                </td>
-                <td>
-                  <button type="button" onClick={() => deleteInvoiceRow(index)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button type="button" onClick={addInvoiceRow}>
-          Add Invoice
         </button>
       </div>
 
@@ -310,4 +254,4 @@ const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
   );
 };
 
-export default BranchSupervisorChecklist;
+export default BranchManagerChecklist;

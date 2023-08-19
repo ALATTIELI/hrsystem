@@ -13,7 +13,7 @@ export const positionButtons: { [key: string]: string[] } = {
   ],
 
   "BRANCH MANAGER": [
-    "Branches Manager Checklist Report",
+    "Branches Manager Checklist",
     "Warning Letter Form",
     "Create Employees Weekly Tasks",
   ],
