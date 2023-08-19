@@ -57,7 +57,7 @@ const VacationAllowanceRequest: React.FC<VacationAllowanceProps> = ({
         vacation salary from the sponsor.
       </p>
 
-      <div className="signature">Signature Employee:</div>
+      <div className="signature">Employee Signature:</div>
     </div>
   );
 };
