@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./branchmanagerchecklist.css";
+import "./operationmanagerchecklist.css";
 import { employeesData } from "../employeedata";
 
-interface BranchManagerChecklistProps {
+interface OperationManagerChecklistProps {
   selectedEmployee: {
     id: number;
     name: string;
@@ -19,10 +19,10 @@ interface BranchManagerChecklistProps {
   };
 }
 
-const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = () => {
+const OperationManagerChecklist: React.FC<OperationManagerChecklistProps> = () => {
   const [selectedBranch, setSelectedBranch] = useState<string>("");
   const [products, setProducts] = useState([
-    { productName: "", reason: "", barcode: "" },
+    { productName: "", reason: "", },
   ]);
 
   const employeesInBranch = employeesData.filter(
@@ -33,9 +33,29 @@ const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = () => {
   const uniqueBranches = [
     ...new Set(employeesData.map((employee) => employee.branch)),
   ];
+  const addInvoiceRow = () => {
+    setInvoices([...invoices, { number: "", note: "" }]);
+  };
+  const [invoices, setInvoices] = useState([{ number: "", note: "" }]);
+
+  const deleteInvoiceRow = (indexToDelete: number) => {
+    setInvoices((prevInvoices) =>
+      prevInvoices.filter((_, index) => index !== indexToDelete)
+    );
+  };
+
+  const handleInvoiceChange = (
+    index: number,
+    field: "number" | "note",
+    value: string
+  ) => {
+    const newInvoices = [...invoices];
+    newInvoices[index][field] = value;
+    setInvoices(newInvoices);
+  };
 
   const addProductRow = () => {
-    setProducts([...products, { productName: "", reason: "", barcode: "" }]);
+    setProducts([...products, { productName: "", reason: "", }]);
   };
 
   const handleProductChange = (
@@ -67,7 +87,7 @@ const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = () => {
 
   return (
     <form>
-      <h3>Branch Manager Checklist Form Weekly</h3>
+      <h3>Operation Manager Checklist Form</h3>
 
       <div className="branch-selection">
         <label>Select Branch: </label>
@@ -194,7 +214,6 @@ const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = () => {
               <thead>
                 <tr>
                   <th>Suspended Products</th>
-                  <th>Barcode</th>
                   <th>Reason and Action Taken</th>
                   <th>Action</th>
                 </tr>
@@ -215,15 +234,6 @@ const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = () => {
                           )
                         }
                       />
-                    </td>
-                    <td>
-                      <textarea
-                        value={product.barcode}
-                        placeholder={`barcode ${index + 1}`}
-                        onChange={(e) =>
-                          handleProductChange(index, "barcode", e.target.value)
-                        }
-                      ></textarea>
                     </td>
                     <td>
                       <textarea
@@ -272,14 +282,60 @@ const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = () => {
               </tbody>
             </table>
           </div>
+          <div className="invoices-section">
+        <h4>Invoices that have been audited:</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Number</th>
+              <th>Notes</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {invoices.map((invoice, index) => (
+              <tr key={index}>
+                <td>
+                  <input
+                    type="number"
+                    value={invoice.number}
+                    placeholder="Number"
+                    onChange={(e) =>
+                      handleInvoiceChange(index, "number", e.target.value)
+                    }
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={invoice.note}
+                    placeholder="Notes"
+                    onChange={(e) =>
+                      handleInvoiceChange(index, "note", e.target.value)
+                    }
+                  />
+                </td>
+                <td>
+                  <button type="button" onClick={() => deleteInvoiceRow(index)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button type="button" onClick={addInvoiceRow}>
+          Add Invoice
+        </button>
+      </div>
 
           <div>
-            <label>Branch challenges and employee needs:</label>
+            <label>What was Observed During The Visit:</label>
             <textarea></textarea>
           </div>
 
           <div>
-            <label>Suggestions by the branch Supervisor:</label>
+            <label>Suggestions by the Operation Manager:</label>
             <textarea></textarea>
           </div>
 
@@ -290,4 +346,4 @@ const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = () => {
   );
 };
 
-export default BranchManagerChecklist;
+export default OperationManagerChecklist;

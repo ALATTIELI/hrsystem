@@ -31,9 +31,9 @@ export const employeesData = [
   {
     id: 3,
     name: "mohammed",
-    position: "UI/UX Designer",
+    position: "OPERATION MANAGER",
     photoUrl: "./images/ven.jpg",
-    username: "mohammed", // Add username field
+    username: "mohd", // Add username field
     password: "1234",
     branch: "MBZ",
     nationality: "Egypt",

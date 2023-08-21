@@ -14,6 +14,7 @@ import AppreciationCertificate from "./forms/appreciationcertificate";
 import WarningLetter from "./forms/warningletter";
 import BranchManagerChecklist from "./forms/branchmanagerchecklist";
 import EmployeesWeeklyTask from "./forms/employeesweeklytask";
+import OperationManagerChecklist from "./forms/operationmanagerchecklist";
 
 function ProfilePage() {
   const { id } = useParams();
@@ -155,6 +156,10 @@ function ProfilePage() {
           {selectedForm === "Employees Weekly Task" && selectedEmployee && (
             <EmployeesWeeklyTask currentBranch={selectedEmployee.branch} />
           )}
+          {selectedForm === "Operation Manager Checklist" &&
+            selectedEmployee && (
+              <OperationManagerChecklist selectedEmployee={selectedEmployee} />
+            )}
 
           {/* Add more form components as needed */}
         </div>

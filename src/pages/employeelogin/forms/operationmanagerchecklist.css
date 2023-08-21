@@ -1,0 +1,128 @@
+/* branchsupervisorchecklist.css */
+
+/* General styling for the entire form */
+form {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    /* background-color: #f7f7f7; */
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h4 {
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  
+  /* table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+  } */
+  
+  /* table th,
+  table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  } */
+  
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    min-height: 60px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .suspended-products-section,
+  .employee-notes-section {
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .evaluation-table {
+      width: 100%; /* Full width */
+      border-collapse: collapse;
+    }
+    
+    /* Header styles */
+    .evaluation-table th {
+      text-align: left;
+      padding: 10px;
+    }
+    
+    /* General cell styles */
+    .evaluation-table td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      vertical-align: top;
+    }
+    
+    /* Column Widths */
+    /* Empty first column */
+    .evaluation-table th:nth-child(1), .evaluation-table td:nth-child(1) {
+      width: 20%; 
+    }
+    
+    /* Satisfying column */
+    .evaluation-table th:nth-child(2), .evaluation-table td:nth-child(2) {
+      width: 10%; /* Smaller because it's just a radio button */
+      text-align: center; /* Center the radio button */
+    }
+    
+    /* Unsatisfying column */
+    .evaluation-table th:nth-child(3), .evaluation-table td:nth-child(3) {
+      width: 10%; /* Smaller because it's just a radio button */
+      text-align: center; /* Center the radio button */
+    }
+    
+    /* Comments & action if any column */
+    .evaluation-table th:nth-child(4), .evaluation-table td:nth-child(4) {
+      width: 60%; /* Most space for comments */
+    }
+    
+    /* Input styles within the table */
+    .evaluation-table input[type="radio"] {
+      margin: 0; /* Remove default margin */
+    }
+    
+    .evaluation-table input[type="text"] {
+      width: 100%; /* Let the text input take the full width of the cell */
+      box-sizing: border-box; /* Include padding and border in total width */
+    }
+    
