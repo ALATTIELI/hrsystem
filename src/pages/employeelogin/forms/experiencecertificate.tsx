@@ -36,7 +36,7 @@ const ExperienceCertificate: React.FC<ExperienceCertificateProps> = ({
       <p className="text-center">Company Name: {employee.branch}</p>
       <p className="text-center">Abu Dhabi – {formattedDate}</p>
 
-      <p className="intro">{employee.branch} hereby certifies that:</p>
+      <p className="intro">{employee.branch} hereby certifies that: {employee.name} </p>
 
       <div className="employment-details">
     <p>He Was Working for us as a <span className="position">Software Engineer</span> During the Period of</p>
