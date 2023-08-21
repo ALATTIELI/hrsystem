@@ -8,7 +8,7 @@ export const commonButtons = [
 export const positionButtons: { [key: string]: string[] } = {
   "OPERATION MANAGER": [
     "Operation Manager Checklist",
-    "Rate the Employees",
+    "Employees Rating",
     "Warning Letter",
   ],
 
