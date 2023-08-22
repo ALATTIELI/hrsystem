@@ -39,6 +39,11 @@
 
 .product-details p {
   margin: 5px;
+  color: white;
+}
+
+.product-details label{
+  color: white;
 }
 
 .back-link {

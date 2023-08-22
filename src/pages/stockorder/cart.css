@@ -1,35 +1,61 @@
-/* Remove default margins and paddings */
-body, h1, h2, h3, p, ul, li, div {
-  margin: 0;
-  padding: 0;
-}
 
-/* Define styles for the cart container */
 .cart-container {
-  max-width: 800px; /* You can adjust this value */
-  margin: 20px auto; 
-  padding: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: block; /* Change from flex to block */
+  width: 100%;
+  text-align: left; /* Explicitly set text alignment to left */
 }
 
-/* Style for each cart item */
+
 .cart-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Distributes items inside evenly */
+  display: block; /* Change from flex to block */
+  width: 100%; /* Ensure the item takes the full width of the container */
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+li {
+  border: 1px solid #ccc;
   padding: 10px;
-  border-bottom: 1px solid #e5e5e5;
-}
+  margin-bottom: 10px;
+  display: block; /* Change from flex to block */
+  text-align: left; /* Explicitly set text alignment to left */
+  max-width: 600px; /* or whatever width you prefer */
+  margin: 10px auto; /* centers the item horizontally */
+  color: white;
+  gap: 10px; 
+  align-items: center; /* vertically aligns items in the center */
 
-.cart-item img {
-  margin-right: 20px; 
-}
-
-.cart-total {
-  padding: 10px;
-  font-weight: bold;
-  font-size: 1.2em;
-  text-align: right;
 }
 
 
+li img {
+    max-width: 50px;
+    border-radius: 5px;
+}
+
+.back-button {
+    position: fixed;  /* Fixed position */
+    top: 10px;  /* Top right corner */
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.arrow-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+}

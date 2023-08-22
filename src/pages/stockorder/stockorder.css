@@ -1,61 +1,60 @@
-.stock-order-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-h1 {
-  margin-bottom: 20px;
+.stock-order-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    position: relative;
 }
 
 .items-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch; /* Stretch items to equal height */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-.item-card {
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #007bff;
-  border-radius: 5px;
-  width: 200px; /* Fixed width for the card */
-  height: 300px; /* Fixed height for the card */
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+.items-container > div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
 }
 
-.image-container {
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  flex: 4;
+.items-container img {
+    max-width: 100%;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%; /* Limit the image height to 70% of the card */
-  object-fit: cover; /* Make the image adjust automatically to fit within the container */
-  border-radius: 5px;
+.items-container h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-decoration: none; /* Removes the underline */
 }
 
-.name-container {
-  flex: 1; /* Name container takes 2/3 of the card's height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.items-container button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-h3 {
-  margin: 0;
+.items-container button:hover {
+    background-color: #0056b3;
 }
-/* Add this to your existing CSS or a separate CSS file */
-.cart-container {
+
+.cart-container-stock {
   position: fixed;
   top: 20px;
   right: 20px;
