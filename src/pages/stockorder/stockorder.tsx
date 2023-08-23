@@ -1,15 +1,28 @@
+interface RootState {
+  cart: {
+    items: any[]; // The type can be refined further based on your cart item type
+  };
+  // ... any other slices of state go here
+}
+
 import { productsData } from './productdata';
 import "./stockorder.css";
 import ItemCard from "./itemcard";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home"; // Import HomeIcon
-import { useCartContext } from "./cartcontext";
+import { useDispatch, useSelector } from "react-redux";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"; // Import ShoppingCartIcon
-
+import { useState } from "react"; // Import useState
+import { addToCart } from "./cartslice";
 
 function Stockorder() {
-  const { addToCart } = useCartContext(); // Add this line to access addToCart function
-  const { cart } = useCartContext();
+  const dispatch = useDispatch();
+  const cart = useSelector((state: RootState) => state.cart);
+
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
+  const handleQuantityChange = (id: string, value: number) => {
+    setQuantities(prev => ({ ...prev, [id]: value }));
+  };
 
   return (
     <div className="stock-order-container">
@@ -27,7 +40,7 @@ function Stockorder() {
       <Link to="/cart">
         <div className="cart-container-stock">
           <ShoppingCartIcon className="cart-icon" />
-          <div className="cart-count">{cart.length}</div>{" "}
+          <div className="cart-count">{cart?.items?.length || 0}</div>
           {/* Display the number of items in the cart */}
         </div>
       </Link>
@@ -36,7 +49,18 @@ function Stockorder() {
         {productsData.map((item, index) => (
           <div key={index}>
             <ItemCard id={item.id} name={item.productname} photoUrl={item.photoUrl} />
-            <button onClick={() => addToCart({...item, name: item.productname})}>Add to Cart</button>
+            
+            <div className="quantity-input-container">
+              <label>Quantity: </label>
+              <input 
+                type="number" 
+                value={quantities[item.id] || 1} 
+                onChange={(e) => handleQuantityChange(item.id, Number(e.target.value))} 
+                min="1"
+              />
+            </div>
+            
+            <button onClick={() => dispatch(addToCart({...item, name: item.productname, quantity: quantities[item.id] || 1}))}>Add to Cart</button>
           </div>
         ))}
       </div>

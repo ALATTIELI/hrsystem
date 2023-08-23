@@ -3,33 +3,42 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './product.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useCartContext } from './cartcontext'; // Import useCartContext
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"; // Import ShoppingCartIcon
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, getCartItemCount } from "./cartslice";
+import { RootState } from './cartslice';
+
 
 
 interface ProductParams {
+  [key: string]: string | undefined;
   id: string;
 }
 
+
+
 function Product() {
-  
-  const params = useParams() as unknown as ProductParams;
+  const itemCount = useSelector((state: RootState) => getCartItemCount(state.cart));
+
+  const params = useParams<ProductParams>();
   const { id } = params;
 
   const product = productsData.find((item) => item.id === id);
 
-  const { addToCart, cart } = useCartContext(); // Access addToCart function from context
+  const dispatch = useDispatch();
 
   const [quantity, setQuantity] = useState(1); // State to track quantity
 
-  const handleAddToCart = () => {
-    addToCart({
-      id: product?.id || '',
-      name: product?.productname || '',
-      price: product?.price || 0,
-      quantity: quantity, // Use the selected quantity
-      photoUrl: product?.photoUrl || '',
-    });
+  const handleAddToCartClick = () => {
+    if (product) {
+      dispatch(addToCart({
+        id: product.id,
+        name: product.productname,
+        price: product.price,
+        quantity: quantity,
+        photoUrl: product.photoUrl
+      }));
+    }
   };
 
   if (!product) {
@@ -56,17 +65,17 @@ function Product() {
           value={quantity}
           onChange={(e) => setQuantity(Number(e.target.value))}
           min="1"
-          max={product.quantity}
+          max={String(product.quantity)}
         />
 
         {/* Add to Cart button */}
-        <button onClick={handleAddToCart}>Add to Cart</button>
+        <button onClick={handleAddToCartClick}>Add to Cart</button>
       </div>
 
       <Link to="/cart">
         <div className="cart-container">
           <ShoppingCartIcon className="cart-icon" />
-          <div className="cart-count">{cart.length}</div>{" "}
+          <div className="cart-count">{itemCount}</div>{" "}
           {/* Display the number of items in the cart */}
         </div>
       </Link>

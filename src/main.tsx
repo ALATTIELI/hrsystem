@@ -1,16 +1,18 @@
-// index.js
+// main.tsx
 import React from 'react';
-import "./index.css"
+import "./index.css";
 import ReactDOM from 'react-dom';
 import AppRoutes from './Routes'; // Import the renamed component
-import { CartProvider } from './pages/stockorder/cartcontext'; // Import your CartProvider
 
+// Redux Imports
+import { Provider } from 'react-redux';
+import store from './pages/stockorder/store';  // Assuming you've created a store.js or store.tsx file that exports your store.
 
 ReactDOM.render(
   <React.StrictMode>
-  <CartProvider>
-    <AppRoutes />
-  </CartProvider>
-</React.StrictMode>,
+    <Provider store={store}>
+      <AppRoutes />
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
