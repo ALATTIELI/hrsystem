@@ -10,9 +10,8 @@ interface CartItem {
 }
 
 export interface RootState {
-    cart: CartItem[];
-    // ... any other slices of state go here
-  }
+  cart: CartItem[];
+}
 
 const initialState: CartItem[] = [];
 
@@ -21,15 +20,10 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
-      // Find the item in the cart
-      const itemIndex = state.findIndex(
-        (item) => item.id === action.payload.id
-      );
+      const itemIndex = state.findIndex((item) => item.id === action.payload.id);
       if (itemIndex >= 0) {
-        // If item exists, increase its quantity
         state[itemIndex].quantity += action.payload.quantity;
       } else {
-        // If item doesn't exist, add it to the cart
         state.push(action.payload);
       }
     },
@@ -37,36 +31,29 @@ const cartSlice = createSlice({
       return state.filter((item) => item.id !== action.payload);
     },
     increaseQuantity: (state, action: PayloadAction<string>) => {
-        const itemIndex = state.findIndex((item) => item.id === action.payload);
-        const productMaxQuantity = productsData.find(p => p.id === action.payload)?.availablequantity || 0;
-        if (itemIndex >= 0 && state[itemIndex].quantity < productMaxQuantity) {
-          state[itemIndex].quantity += 1;
-        }
-      },
-      decreaseQuantity: (state, action: PayloadAction<string>) => {
-        const itemIndex = state.findIndex((item) => item.id === action.payload);
-        if (itemIndex >= 0 && state[itemIndex].quantity > 1) {
-          state[itemIndex].quantity -= 1;
-        }
-      },
-    handleQuantityChange: (
-      state,
-      action: PayloadAction<{ id: string; quantity: number }>
-    ) => {
-      const itemIndex = state.findIndex(
-        (item) => item.id === action.payload.id
-      );
+      const itemIndex = state.findIndex((item) => item.id === action.payload);
+      const productMaxQuantity = productsData.find(p => p.id === action.payload)?.availablequantity || 0;
+      if (itemIndex >= 0 && state[itemIndex].quantity < productMaxQuantity) {
+        state[itemIndex].quantity += 1;
+      }
+    },
+    decreaseQuantity: (state, action: PayloadAction<string>) => {
+      const itemIndex = state.findIndex((item) => item.id === action.payload);
+      if (itemIndex >= 0 && state[itemIndex].quantity > 1) {
+        state[itemIndex].quantity -= 1;
+      }
+    },
+    handleQuantityChange: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
+      const itemIndex = state.findIndex((item) => item.id === action.payload.id);
       if (itemIndex >= 0) {
         state[itemIndex].quantity = action.payload.quantity;
       }
     },
+    clearCart: () => {
+      return initialState;
+    }
   },
 });
-
-export const getMaxQuantity = (productId: string) => {
-  const product = productsData.find((p) => p.id === productId);
-  return product ? product.availablequantity : 0;
-};
 
 export const {
   addToCart,
@@ -74,11 +61,11 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   handleQuantityChange,
+  clearCart
 } = cartSlice.actions;
 
-export default cartSlice.reducer;
 export const getCartItemCount = (state: CartItem[]) => {
-    return state.reduce((count, item) => count + item.quantity, 0);
+  return state.reduce((count, item) => count + item.quantity, 0);
 };
 
-  
+export default cartSlice.reducer;

@@ -1,19 +1,16 @@
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./cart.css";
+import { clearCart } from "./cartslice"; // Import the action to clear the cart
 import { useSelector, useDispatch } from "react-redux";
-import {
-  increaseQuantity,
-  decreaseQuantity,
-  handleQuantityChange,
-} from "./cartslice";
+import { removeFromCart, increaseQuantity, decreaseQuantity } from "./cartslice";
 import { productsData } from "./productdata";
 
 interface CartItem {
   id: string;
   name: string;
   photoUrl: string;
-  price: number;
+  costprice: number;
   quantity: number;
 }
 
@@ -21,57 +18,67 @@ function Cart() {
   const cart = useSelector((state: { cart: CartItem[] }) => state.cart);
   const dispatch = useDispatch();
 
+  const totalPrice = cart.reduce((sum, item) => {
+    if (typeof item.costprice === "number" && typeof item.quantity === "number") {
+      return sum + item.costprice * item.quantity;
+    } else {
+      console.error("Invalid data in cart:", item);
+      return sum;
+    }
+  }, 0);
+  
+  const removeItem = (id: string) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const handleIncreaseQuantity = (id: string) => {
+    dispatch(increaseQuantity(id));
+  };
+
+  const handleDecreaseQuantity = (id: string) => {
+    dispatch(decreaseQuantity(id));
+  };
+  const handleClearCart = () => {
+    dispatch(clearCart()); // Clear the entire cart
+  };
   return (
     <div className="cart-container">
+      <div className="clear-cart-container">
+        <button onClick={handleClearCart}>Clear Cart</button>
+      </div>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <ul>
-          {cart.map((item: CartItem) => {
-            const productDetails = productsData.find((p) => p.id === item.id);
-            const productMaxQuantity = productDetails?.availablequantity || 0;
-            return (
-              <li key={item.id}>
-              <img src={item.photoUrl} alt={item.name} />
-              <div className="product-details">
-                <span className="product-name">{item.name}</span>
-                <span className="product-cost-price">
-                  Cost Price: AED{productDetails?.costprice?.toFixed(2) || "N/A"}
-                </span>
-                <span className="product-barcode-price">
-                  Barcode Price: AED{productDetails?.barcodeprice?.toFixed(2) || "N/A"}
-                </span>
-                <span className="available-quantity">
-                  Available Quantity: {productMaxQuantity}
-                </span>
-              </div>
-                <div className="quantity-controls">
-                  <button onClick={() => dispatch(decreaseQuantity(item.id))}>
-                    -
-                  </button>
-                  <input
-                    type="number"
-                    value={item.quantity}
-                    onChange={(e) =>
-                      dispatch(
-                        handleQuantityChange({
-                          id: item.id,
-                          quantity: Number(e.target.value),
-                        })
-                      )
-                    }
-                    min="1"
-                    max={productMaxQuantity}
-                  />
-                  <button onClick={() => dispatch(increaseQuantity(item.id))}>
-                    +
-                  </button>
+        <div className="cart-container">
+          <div className="cart-items">
+            {cart.map((item: CartItem) => {
+              const productDetails = productsData.find((p) => p.id === item.id);
+              return (
+                <div key={item.id} className="cart-item">
+                  <img src={item.photoUrl} alt={item.name} className="cart-item-image"/>
+                  <div className="cart-item-details">
+                    <span className="cart-item-name">{item.name}</span>
+                    <span className="cart-item-costprice">Cost: AED{productDetails?.costprice.toFixed(2)}</span>
+                    <span className="cart-item-availablequantity">Available Quantity: {productDetails?.availablequantity}</span>
+                    <div className="cart-item-quantity">
+                      <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+                      <input type="number" value={item.quantity} readOnly />
+                      <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
+                    </div>
+                    <button onClick={() => removeItem(item.id)}>Remove</button>
+                  </div>
                 </div>
-              </li>
-            );
-          })}
-        </ul>
+              );
+            })}
+          </div>
+          <div className="cart-summary">
+            <span>Cart Summary</span>
+            <span>Subtotal: AED: {totalPrice.toFixed(2)}</span>
+            <button className="checkout-button">Submit</button>
+          </div>
+        </div>
       )}
+
       <Link to="/stockorder" className="back-link">
         <button className="back-button">
           <ArrowBackIcon className="arrow-icon" />

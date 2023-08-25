@@ -72,6 +72,7 @@ function Product() {
         <p>{product.description}</p>
         <p>Cost Price: AED{product.costprice.toFixed(2)}</p>
         <p>Barcode Price: AED{product.barcodeprice.toFixed(2)}</p>
+        <p>Barcode: {product.barcode}</p>
         <p>SKU: {product.sku}</p>
         <p> Available Quantity: {product.availablequantity}</p>
 

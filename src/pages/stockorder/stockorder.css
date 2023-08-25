@@ -121,14 +121,23 @@
   transition: background-color 0.3s;
 }
 
-.category-filter button:hover {
-  background-color: #ddd;
+
+/* ... (your existing styles) ... */
+
+.category-filter button, .brand-filter button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Default background color */
+  transition: background-color 0.3s;
 }
 
-.category-filter .active {
-  background-color: #007bff;
+.category-filter .active, .brand-filter .active {
+  background-color: black; /* Highlighted background color when active/selected */
   color: white;
 }
+
 
 .search-bar {
   width: 100%;
@@ -137,3 +146,37 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+/* ... (rest of your existing styles) */
+
+/* Styles for the brand filter container */
+.brand-filter {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 20px;
+  border-right: 1px solid #ccc;
+}
+
+/* Styles for brand buttons */
+.brand-filter button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+
+/* Style for the brand name (h1) above products */
+.items-container h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+  border-bottom: 1px solid #007bff;
+  padding-bottom: 10px;
+}
+
+

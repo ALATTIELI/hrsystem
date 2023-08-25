@@ -18,10 +18,30 @@ import { RootState } from "./cartslice";
 
 function Stockorder() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const [displayProducts, setDisplayProducts] = useState(true);
+
+  // Categories list derived from productsData
+  const categories = [...new Set(productsData.map((item) => item.category))];
+  // Determine the brands to display based on selected category or if "All" is chosen
+
+  const allBrands = [...new Set(productsData.map((item) => item.brand))];
 
   const itemCount = useSelector((state: RootState) =>
     getCartItemCount(state.cart)
   );
+
+  const brands = selectedCategory
+    ? [
+        ...new Set(
+          productsData
+            .filter((product) => product.category === selectedCategory)
+            .map((item) => item.brand)
+        ),
+      ]
+    : [];
+  const displayedBrands = selectedCategory ? brands : allBrands;
 
   const dispatch = useDispatch();
 
@@ -30,23 +50,22 @@ function Stockorder() {
     setQuantities((prev) => ({ ...prev, [id]: value }));
   };
   // State to track the selected category
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Categories list derived from productsData
-  const categories = [...new Set(productsData.map((item) => item.category))];
 
   // Filtered products based on selected category
   const displayedProducts = productsData
-  .filter(product => 
-    !selectedCategory || product.category === selectedCategory
-  )
-  .filter(product => 
-    !searchTerm ||
-    product.productname.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.barcode?.toLowerCase().includes(searchTerm.toLowerCase()) || // Assuming each product has a barcode property
-    product.sku.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
+    .filter(
+      (product) => !selectedCategory || product.category === selectedCategory
+    )
+    .filter((product) => !selectedBrand || product.brand === selectedBrand)
+    .filter(
+      (product) =>
+        !searchTerm ||
+        product.productname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.barcode?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.sku.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   return (
     <div className="stock-order-container">
@@ -78,52 +97,81 @@ function Stockorder() {
 
       <div className="main-content">
         <div className="category-filter">
-          <button onClick={() => setSelectedCategory(null)}>All</button>
+          <button
+            onClick={() => {
+              setSelectedCategory(null); // Clear the selected category
+              setSelectedBrand(null); // Clear the selected brand
+              setDisplayProducts(true); // Set to show all products
+            }}
+          >
+            All
+          </button>
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                setSelectedCategory(category);
+                setSelectedBrand(null);
+                setDisplayProducts(false);
+              }}
               className={selectedCategory === category ? "active" : ""}
             >
               {category}
             </button>
           ))}
         </div>
+        <div className="brand-filter">
+          {displayedBrands.map((brand) => (
+            <button
+              key={brand}
+              onClick={() => {
+                setSelectedBrand(brand);
+                setDisplayProducts(true);
+              }}
+              className={selectedBrand === brand ? "active" : ""}
+            >
+              {brand}
+            </button>
+          ))}
+        </div>
 
         <div className="items-container">
-          {displayedProducts.map((item, index) => (
-            <div key={index}>
-              <ItemCard
-                id={item.id}
-                name={item.productname}
-                photoUrl={item.photoUrl}
-              />
-              <div className="quantity-input-container">
-                <label>Quantity: </label>
-                <input
-                  type="number"
-                  value={quantities[item.id] || 1}
-                  onChange={(e) =>
-                    handleQuantityChange(item.id, Number(e.target.value))
-                  }
-                  min="1"
+          {selectedBrand && displayProducts && <h1>{selectedBrand}</h1>}
+
+          {displayProducts &&
+            displayedProducts.map((item, index) => (
+              <div key={index}>
+                <ItemCard
+                  id={item.id}
+                  name={item.productname}
+                  photoUrl={item.photoUrl}
                 />
+                <div className="quantity-input-container">
+                  <label>Quantity: </label>
+                  <input
+                    type="number"
+                    value={quantities[item.id] || 1}
+                    onChange={(e) =>
+                      handleQuantityChange(item.id, Number(e.target.value))
+                    }
+                    min="1"
+                  />
+                </div>
+                <button
+                  onClick={() =>
+                    dispatch(
+                      addToCart({
+                        ...item,
+                        name: item.productname,
+                        quantity: quantities[item.id] || 1,
+                      })
+                    )
+                  }
+                >
+                  Add to Cart
+                </button>
               </div>
-              <button
-                onClick={() =>
-                  dispatch(
-                    addToCart({
-                      ...item,
-                      name: item.productname,
-                      quantity: quantities[item.id] || 1,
-                    })
-                  )
-                }
-              >
-                Add to Cart
-              </button>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>
