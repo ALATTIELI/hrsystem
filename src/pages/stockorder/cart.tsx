@@ -41,6 +41,10 @@ function Cart() {
   const handleClearCart = () => {
     dispatch(clearCart()); // Clear the entire cart
   };
+  function handleSubmit() {
+    console.log(cart);
+}
+
   return (
     <div className="cart-container">
       <div className="clear-cart-container">
@@ -74,7 +78,7 @@ function Cart() {
           <div className="cart-summary">
             <span>Cart Summary</span>
             <span>Subtotal: AED: {totalPrice.toFixed(2)}</span>
-            <button className="checkout-button">Submit</button>
+            <button className="checkout-button" onClick={handleSubmit}>Submit</button>
           </div>
         </div>
       )}
