@@ -5,7 +5,7 @@ interface CartItem {
   id: string;
   name: string;
   photoUrl: string;
-  price: number;
+  costprice: number;
   quantity: number;
 }
 
@@ -37,17 +37,18 @@ const cartSlice = createSlice({
       return state.filter((item) => item.id !== action.payload);
     },
     increaseQuantity: (state, action: PayloadAction<string>) => {
-      const itemIndex = state.findIndex((item) => item.id === action.payload);
-      if (itemIndex >= 0) {
-        state[itemIndex].quantity += 1;
-      }
-    },
-    decreaseQuantity: (state, action: PayloadAction<string>) => {
-      const itemIndex = state.findIndex((item) => item.id === action.payload);
-      if (itemIndex >= 0 && state[itemIndex].quantity > 1) {
-        state[itemIndex].quantity -= 1;
-      }
-    },
+        const itemIndex = state.findIndex((item) => item.id === action.payload);
+        const productMaxQuantity = productsData.find(p => p.id === action.payload)?.availablequantity || 0;
+        if (itemIndex >= 0 && state[itemIndex].quantity < productMaxQuantity) {
+          state[itemIndex].quantity += 1;
+        }
+      },
+      decreaseQuantity: (state, action: PayloadAction<string>) => {
+        const itemIndex = state.findIndex((item) => item.id === action.payload);
+        if (itemIndex >= 0 && state[itemIndex].quantity > 1) {
+          state[itemIndex].quantity -= 1;
+        }
+      },
     handleQuantityChange: (
       state,
       action: PayloadAction<{ id: string; quantity: number }>
@@ -64,7 +65,7 @@ const cartSlice = createSlice({
 
 export const getMaxQuantity = (productId: string) => {
   const product = productsData.find((p) => p.id === productId);
-  return product ? product.quantity : 0;
+  return product ? product.availablequantity : 0;
 };
 
 export const {

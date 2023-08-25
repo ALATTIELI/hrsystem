@@ -1,24 +1,39 @@
 
 .stock-order-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    position: relative;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.main-content {
+  display: flex;
+  justify-content: space-between;
 }
 
 .items-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-content: flex-start; /* ensures that items are aligned to the top */
+  margin-left: 20px; /* give a space between the categories and items */
 }
 
 .items-container > div {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    text-align: center;
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  align-items: center; /* center children horizontally */
+  width: 200px; /* width of each product card */
+  border: 1px solid #ccc; /* border for each product */
+  padding: 10px; /* some padding inside the border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* optional shadow for a lifted appearance */
+  border-radius: 5px; /* rounded corners */
 }
 
 .items-container img {
@@ -81,4 +96,44 @@
   margin-left: -10px;
   margin-top: -10px;
   z-index: 1;
+}
+
+.quantity-input-container label{
+  color: white;
+}
+
+.category-filter {
+  width: 150px; /* Adjust based on your needs */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 500px; /* Adjust based on your needs */
+  border-right: 1px solid #ccc;
+  padding-right: 20px;
+}
+
+.category-filter button {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.category-filter button:hover {
+  background-color: #ddd;
+}
+
+.category-filter .active {
+  background-color: #007bff;
+  color: white;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

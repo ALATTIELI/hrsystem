@@ -1,61 +1,88 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+}
 
 .cart-container {
-  display: block; /* Change from flex to block */
-  width: 100%;
-  text-align: left; /* Explicitly set text alignment to left */
+  max-width: 600px;
+  padding: 20px;
+  position: relative;
+  color: white;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.cart-container ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-
-.cart-item {
-  display: block; /* Change from flex to block */
-  width: 100%; /* Ensure the item takes the full width of the container */
-}
-
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    justify-content: flex-start;
+/* Back button */
+.back-button {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 li {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-  display: block; /* Change from flex to block */
-  text-align: left; /* Explicitly set text alignment to left */
-  max-width: 600px; /* or whatever width you prefer */
-  margin: 10px auto; /* centers the item horizontally */
-  color: white;
-  gap: 10px; 
-  align-items: center; /* vertically aligns items in the center */
-
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
 }
-
 
 li img {
-    max-width: 50px;
-    border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  margin-right: 20px;
+  flex-shrink: 0; /* Prevent the image from shrinking */
 }
 
-.back-button {
-    position: fixed;  /* Fixed position */
-    top: 10px;  /* Top right corner */
-    right: 10px;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
+.product-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-right: 20px;
+}
+.product-details span {
+  margin-bottom: 10px; /* This will give space between each span element */
+}
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px; /* Add more space between the name and other details */
 }
 
-.back-button:hover {
-    background-color: #0056b3;
+.product-price,
+.available-quantity {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.arrow-icon {
-    vertical-align: middle;
-    margin-right: 5px;
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 20px; /* Add some space between the details and the controls */
+}
+
+.quantity-controls button,
+.quantity-controls input {
+  height: 30px;
+  padding: 0 10px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+}
+
+.quantity-controls button {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantity-controls input {
+  width: 50px;
+  text-align: center;
 }
