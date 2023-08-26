@@ -5,15 +5,20 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --app-background-color: white;
+  --form-background-color: #f2f2f2; /* Example color for form backgrounds */
+
 }
 
+body {
+  background-color: var(--app-background-color);
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -55,10 +60,23 @@ button:hover {
   margin-right: 5px; /* Adjust as needed */
 }
 
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
+.employee-profile-form {
+  width: 800px; /* Takes up 90% of its container's width */
+  max-width: 1000px; /* Caps the width for larger screens */
+  margin: 20px auto; /* Centers the form and adds vertical spacing */
+  padding: 20px;
+  background-color: gray;
+  border-radius: 10px;
+}
+
+/* Adjustments for smaller screens */
+@media only screen and (max-width: 600px) {
+  .employee-profile-form {
+      width: 100%; /* Takes up full width on smaller screens */
+      padding: 15px;
+  }
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {

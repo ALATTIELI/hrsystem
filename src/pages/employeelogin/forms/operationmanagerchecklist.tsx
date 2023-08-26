@@ -19,11 +19,11 @@ interface OperationManagerChecklistProps {
   };
 }
 
-const OperationManagerChecklist: React.FC<OperationManagerChecklistProps> = () => {
+const OperationManagerChecklist: React.FC<
+  OperationManagerChecklistProps
+> = () => {
   const [selectedBranch, setSelectedBranch] = useState<string>("");
-  const [products, setProducts] = useState([
-    { productName: "", reason: "", },
-  ]);
+  const [products, setProducts] = useState([{ productName: "", reason: "" }]);
 
   const employeesInBranch = employeesData.filter(
     (employee) => employee.branch === selectedBranch
@@ -55,7 +55,7 @@ const OperationManagerChecklist: React.FC<OperationManagerChecklistProps> = () =
   };
 
   const addProductRow = () => {
-    setProducts([...products, { productName: "", reason: "", }]);
+    setProducts([...products, { productName: "", reason: "" }]);
   };
 
   const handleProductChange = (
@@ -86,7 +86,7 @@ const OperationManagerChecklist: React.FC<OperationManagerChecklistProps> = () =
   };
 
   return (
-    <form>
+    <form className="employee-profile-form">
       <h3>Operation Manager Checklist Form</h3>
 
       <div className="branch-selection">
@@ -283,51 +283,54 @@ const OperationManagerChecklist: React.FC<OperationManagerChecklistProps> = () =
             </table>
           </div>
           <div className="invoices-section">
-        <h4>Invoices that have been audited:</h4>
-        <table>
-          <thead>
-            <tr>
-              <th>Number</th>
-              <th>Notes</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {invoices.map((invoice, index) => (
-              <tr key={index}>
-                <td>
-                  <input
-                    type="number"
-                    value={invoice.number}
-                    placeholder="Number"
-                    onChange={(e) =>
-                      handleInvoiceChange(index, "number", e.target.value)
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={invoice.note}
-                    placeholder="Notes"
-                    onChange={(e) =>
-                      handleInvoiceChange(index, "note", e.target.value)
-                    }
-                  />
-                </td>
-                <td>
-                  <button type="button" onClick={() => deleteInvoiceRow(index)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button type="button" onClick={addInvoiceRow}>
-          Add Invoice
-        </button>
-      </div>
+            <h4>Invoices that have been audited:</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Number</th>
+                  <th>Notes</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {invoices.map((invoice, index) => (
+                  <tr key={index}>
+                    <td>
+                      <input
+                        type="number"
+                        value={invoice.number}
+                        placeholder="Number"
+                        onChange={(e) =>
+                          handleInvoiceChange(index, "number", e.target.value)
+                        }
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        value={invoice.note}
+                        placeholder="Notes"
+                        onChange={(e) =>
+                          handleInvoiceChange(index, "note", e.target.value)
+                        }
+                      />
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={() => deleteInvoiceRow(index)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <button type="button" onClick={addInvoiceRow}>
+              Add Invoice
+            </button>
+          </div>
 
           <div>
             <label>What was Observed During The Visit:</label>

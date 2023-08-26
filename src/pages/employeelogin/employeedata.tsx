@@ -17,7 +17,7 @@ export const employeesData = [
   {
     id: 2,
     name: "Jane Smith",
-    position: "BRANCH SUPERVISOR",
+    position: "OPERATION MANAGER",
     photoUrl: "/assets/ven.jpg",
     username: "jane", // Add username field
     password: "1234",

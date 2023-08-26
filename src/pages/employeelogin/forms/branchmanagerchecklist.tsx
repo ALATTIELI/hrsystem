@@ -66,7 +66,7 @@ const BranchManagerChecklist: React.FC<BranchManagerChecklistProps> = () => {
   };
 
   return (
-    <form>
+    <form className="employee-profile-form">
       <h3>Branch Manager Checklist Form Weekly</h3>
 
       <div className="branch-selection">

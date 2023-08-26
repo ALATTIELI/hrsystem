@@ -3,19 +3,19 @@ import { employeesData } from "../employeedata";
 import "./employeesWeeklyTask.css";
 
 interface Employee {
-    id: number;
-    name: string;
-    position: string;
-    photoUrl: string;
-    username: string;
-    password: string;
-    branch: string;
-    nationality: string;
-    idnumber: string;
-    passportnumber: string;
-    joiningdate: string;
-    salary: string;
-    // add any other fields here
+  id: number;
+  name: string;
+  position: string;
+  photoUrl: string;
+  username: string;
+  password: string;
+  branch: string;
+  nationality: string;
+  idnumber: string;
+  passportnumber: string;
+  joiningdate: string;
+  salary: string;
+  // add any other fields here
 }
 
 interface Props {
@@ -59,60 +59,62 @@ const EmployeeWeeklyTask: React.FC<Props> = ({ currentBranch }) => {
   };
 
   return (
-    <div className="task-form">
-      <h1>Employees Weekly Task</h1>
+    <form className="employee-profile-form">
+      <div className="task-form">
+        <h1>Employees Weekly Task</h1>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Employee Name</th>
-            <th>Task Name</th>
-            <th>Task Description</th>
-            <th>Due Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employeesData
-            .filter((emp) => emp.branch === currentBranch)
-            .map((employee) => (
-              <tr key={employee.id}>
-                <td>{employee.name}</td>
-                <td>
-                  <input 
-                    type="text" 
-                    placeholder="Task Name" 
-                    name="taskName"
-                    value={currentTask.taskName} 
-                    onChange={handleChange} 
-                  />
-                </td>
-                <td>
-                  <textarea 
-                    placeholder="Task Description"
-                    name="description" 
-                    value={currentTask.description}
-                    onChange={handleChange} 
-                  />
-                </td>
-                <td>
-                  <input 
-                    type="date" 
-                    name="dueDate"
-                    value={currentTask.dueDate} 
-                    onChange={handleChange} 
-                  />
-                </td>
-                <td>
-                  <button onClick={() => handleAddTask(employee)}>
-                    Add Task
-                  </button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Employee Name</th>
+              <th>Task Name</th>
+              <th>Task Description</th>
+              <th>Due Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employeesData
+              .filter((emp) => emp.branch === currentBranch)
+              .map((employee) => (
+                <tr key={employee.id}>
+                  <td>{employee.name}</td>
+                  <td>
+                    <input
+                      type="text"
+                      placeholder="Task Name"
+                      name="taskName"
+                      value={currentTask.taskName}
+                      onChange={handleChange}
+                    />
+                  </td>
+                  <td>
+                    <textarea
+                      placeholder="Task Description"
+                      name="description"
+                      value={currentTask.description}
+                      onChange={handleChange}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="date"
+                      name="dueDate"
+                      value={currentTask.dueDate}
+                      onChange={handleChange}
+                    />
+                  </td>
+                  <td>
+                    <button onClick={() => handleAddTask(employee)}>
+                      Add Task
+                    </button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    </form>
   );
 };
 

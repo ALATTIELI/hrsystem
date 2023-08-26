@@ -34,6 +34,7 @@
   padding: 10px; /* some padding inside the border */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* optional shadow for a lifted appearance */
   border-radius: 5px; /* rounded corners */
+  background-color: black;
 }
 
 .items-container img {

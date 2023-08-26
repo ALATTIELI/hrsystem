@@ -1,12 +1,3 @@
-.salary-certificate-form {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 .date {
     float: right;
     color: #007bff;

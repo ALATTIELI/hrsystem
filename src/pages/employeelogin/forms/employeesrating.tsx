@@ -24,8 +24,10 @@ interface Rate {
   rating: number;
 }
 
-const EmployeesRating: React.FC<EmployeesRatingProps> = ({ selectedEmployee }) => {
-    const [selectedBranch, setSelectedBranch] = useState<string>("");
+const EmployeesRating: React.FC<EmployeesRatingProps> = ({
+  selectedEmployee,
+}) => {
+  const [selectedBranch, setSelectedBranch] = useState<string>("");
   const [ratings, setRatings] = useState<Rate[]>([]);
 
   // Extract unique branches from employeesData
@@ -54,7 +56,7 @@ const EmployeesRating: React.FC<EmployeesRatingProps> = ({ selectedEmployee }) =
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="employee-profile-form" onSubmit={handleSubmit}>
       <h2>Rate Employee: {selectedEmployee.name}</h2>
 
       <div className="branch-selection">

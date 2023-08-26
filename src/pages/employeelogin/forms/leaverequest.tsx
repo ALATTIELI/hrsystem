@@ -67,7 +67,7 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
     <div className="sick-leave-form">
       <h2>Request Sick Leave</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form className="employee-profile-form" onSubmit={handleSubmit}>
         {/* Employee Name and Position */}
         <div className="employee-info-form">
           <label>
@@ -117,10 +117,8 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
             value={absenceType}
             onChange={(e) => setAbsenceType(e.target.value)}
           >
-            <option value="sick">Sick</option>
-            <option value="timeOff">Time Off Without Pay</option>
-            <option value="personal">Personal</option>
-            <option value="maternity">Maternity/Paternity</option>
+            <option value="sick leave">Sick Leave</option>
+            <option value="unpaid leave">Unpaid Leave</option>
             <option value="annual leave">Annual Leave</option>
             <option value="others">Others - Please Specify</option>
           </select>

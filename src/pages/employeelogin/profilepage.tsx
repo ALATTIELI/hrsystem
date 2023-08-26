@@ -81,7 +81,7 @@ function ProfilePage() {
         {/* Add Start and End break buttons */}
         <div className="profile-container">
           {/* ... other divs */}
-          <div className="fixed-buttons">
+          <div className="fixed-buttons-profile">
             <button onClick={toggleBreak}>
               {isBreakStarted ? "End Break" : "Start Break"}
             </button>
@@ -103,7 +103,7 @@ function ProfilePage() {
           {/* Display specific buttons based on employee's position */}
           {selectedEmployee &&
             positionButtons[selectedEmployee.position]?.map((buttonName) => (
-              <button
+              <button className="button-profile"
                 key={buttonName}
                 onClick={() => handleButtonClick(buttonName)}
               >
@@ -113,7 +113,7 @@ function ProfilePage() {
 
           {/* Display common buttons for all positions */}
           {commonButtons.map((buttonName) => (
-            <button
+              <button className="button-profile"
               key={buttonName}
               onClick={() => handleButtonClick(buttonName)}
             >

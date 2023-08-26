@@ -22,32 +22,35 @@ interface Props {
 
 const AppreciationCertificate: React.FC<Props> = ({ selectedEmployee }) => {
   return (
-    <div className="certificate-container">
-      <div className="corner-left"></div>
-      <div className="corner-right"></div>
-      <div>
-        <img
-          src="/assets/logo1.png"
-          alt="Company Logo"
-          className="company-logo"
-        />
+    <form className="employee-profile-form">
+      <div className="certificate-container">
+        <div className="corner-left"></div>
+        <div className="corner-right"></div>
+        <div>
+          <img
+            src="/assets/logo1.png"
+            alt="Company Logo"
+            className="company-logo"
+          />
+        </div>
+
+        <h1 className="bold-text-n">Certificate of Appreciation</h1>
+        <p className="bold-text margin-top">
+          We would like to express our sincere thanks and appreciation
+        </p>
+
+        <p className="bold-text name">To: {selectedEmployee.name}</p>
+        <p className="bold-text">
+          For his efforts as A {selectedEmployee.position} in{" "}
+          {selectedEmployee.branch} branch and hard work
+        </p>
+
+        <div className="footer-texts">
+          <p>HR & ADMINISTRATIVE</p>
+          <p>LARAINE KRIS ALCANTARA</p>
+        </div>
       </div>
-
-      <h1 className="bold-text-n">Certificate of Appreciation</h1>
-      <p className="bold-text margin-top">
-        We would like to express our sincere thanks and appreciation
-      </p>
-
-      <p className="bold-text name">To: {selectedEmployee.name}</p>
-      <p className="bold-text">
-        For his efforts as A {selectedEmployee.position} in {selectedEmployee.branch} branch and hard work
-      </p>
-
-      <div className="footer-texts">
-        <p>HR & ADMINISTRATIVE</p>
-        <p>LARAINE KRIS ALCANTARA</p>
-      </div>
-    </div>
+    </form>
   );
 };
 

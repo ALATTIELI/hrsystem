@@ -85,7 +85,7 @@ const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
   };
 
   return (
-    <form>
+    <form className="employee-profile-form">
       <h3>Branch Supervisor Checklist Form Weekly</h3>
 
       <table className="evaluation-table">

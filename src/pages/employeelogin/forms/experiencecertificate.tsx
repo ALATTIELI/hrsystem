@@ -30,36 +30,50 @@ const ExperienceCertificate: React.FC<ExperienceCertificateProps> = ({
   }
 
   return (
-    <div className="experience-certificate-form">
-      <h2 className="text-center">Certificate of Experience</h2>
+    <form className="employee-profile-form">
+      <div className="experience-certificate-form">
+        <h2 className="text-center">Certificate of Experience</h2>
 
-      <p className="text-center">Company Name: {employee.branch}</p>
-      <p className="text-center">Abu Dhabi – {formattedDate}</p>
+        <p className="text-center">Company Name: {employee.branch}</p>
+        <p className="text-center">Abu Dhabi – {formattedDate}</p>
 
-      <p className="intro">{employee.branch} hereby certifies that: {employee.name} </p>
+        <p className="intro">
+          {employee.branch} hereby certifies that: {employee.name}{" "}
+        </p>
 
-      <div className="employment-details">
-    <p>He Was Working for us as a <span className="position">Software Engineer</span> During the Period of</p>
-    <div className="date-container">
-        <p><span className="label">Hiring Date:</span> 01/07/2023</p>
-        <p><span className="label">Till Date:</span> 14/08/2023</p>
-    </div>
-    <p>Last job he was held <span className="position">Software Engineer</span></p>
-</div>
+        <div className="employment-details">
+          <p>
+            He Was Working for us as a{" "}
+            <span className="position">Software Engineer</span> During the
+            Period of
+          </p>
+          <div className="date-container">
+            <p>
+              <span className="label">Hiring Date:</span> 01/07/2023
+            </p>
+            <p>
+              <span className="label">Till Date:</span> 14/08/2023
+            </p>
+          </div>
+          <p>
+            Last job he was held{" "}
+            <span className="position">Software Engineer</span>
+          </p>
+        </div>
 
+        <p className="performance-statement">
+          He has performed his duties with the company with efficiency and
+          sincerity. We witness his good behavior and work performance.
+        </p>
 
-      <p className="performance-statement">
-        He has performed his duties with the company with efficiency and
-        sincerity. We witness his good behavior and work performance.
-      </p>
+        <p className="disclaimer">
+          This certificate was granted upon its request without bearing company
+          the slightest responsibility towards the rights of third parties.
+        </p>
 
-      <p className="disclaimer">
-        This certificate was granted upon its request without bearing company
-        the slightest responsibility towards the rights of third parties.
-      </p>
-
-      <p className="text-center company-management">Company Management</p>
-    </div>
+        <p className="text-center company-management">Company Management</p>
+      </div>
+    </form>
   );
 };
 

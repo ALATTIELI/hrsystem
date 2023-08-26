@@ -1,9 +1,5 @@
 /* Basic resets for margin and padding */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 .profile-container {
   font-family: Arial, sans-serif;
@@ -25,22 +21,25 @@
   align-items: center;
 }
 
-.employee-image img {
-  border-radius: 50%; /* Circle shape */
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  margin-right: 20px;
+.employee-image img{
+  border-radius: 0; /* Removes circular appearance */
+  width: 100px;     /* Adjust based on desired size */
+  height: 100px;
+  margin-right: 100px;
 }
 
 .employee-details h1 {
   font-size: 24px;
   color: #007bff;
-  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+  /* margin-left: 10px; */
 }
 
 .employee-details p {
-  color: white;
+  display: block;
+  margin-left: 10px;
+  color: black;
 }
 
 .arrow-icon {
@@ -63,7 +62,7 @@
   padding-left: 30px;
 }
 
-button {
+.button-profile {
   display: block;
   background-color: #007bff;
   color: #fff;
@@ -73,18 +72,22 @@ button {
   margin-bottom: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 250px;    /* Adjust based on desired size */
+  height: 40px;
 }
 
 /* If there are more specific styles for your forms or other elements, you can add them below. */
-.fixed-buttons {
+.fixed-buttons-profile {
   position: fixed;
   bottom: 1rem;
   left: 1rem;
   display: flex;
   gap: 1rem;
+  width: 400px;    /* Adjust based on desired size */
+  height: 60px;
 }
 
-.fixed-buttons button {
+.fixed-buttons-profile button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border: none;
@@ -93,6 +96,6 @@ button {
   transition: background-color 0.3s ease;
 }
 
-.fixed-buttons button:hover {
+.fixed-buttons-profile button:hover {
   background-color: #e0e0e0;
 }
