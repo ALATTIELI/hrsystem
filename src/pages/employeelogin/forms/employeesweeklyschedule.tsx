@@ -1,14 +1,15 @@
-// EmployeesWeeklyScheduleForm.tsx
 import "./employeesweeklyschedule.css";
 import React from "react";
+import { employeesData } from "../employeedata"; // Assuming you have this data
 
 interface Employee {
   id: number;
   name: string;
+  branch: string; // Assuming there's a branch property for each employee
 }
 
 interface Props {
-  selectedEmployee: Employee; // The selected employee
+  selectedEmployee: Employee; // The branch supervisor
 }
 
 const daysOfWeek = [
@@ -22,64 +23,46 @@ const daysOfWeek = [
 ];
 
 const EmployeesWeeklySchedule: React.FC<Props> = ({ selectedEmployee }) => {
+  const selectedBranch = selectedEmployee.branch;
+  const branchEmployees = employeesData.filter(
+    (employee) => employee.branch === selectedBranch
+  );
+
   return (
     <form className="employee-profile-form">
-      <table>
+      <table className="schedule-table">
         <thead>
           <tr>
-            <th>Employee Name</th>
-            {daysOfWeek.slice(0, 3).map((day) => (
-              <th key={day}>{day}</th>
+            <th className="employee-name-header">Employee Name</th>
+            {daysOfWeek.map((day) => (
+              <React.Fragment key={day}>
+                <th className="day-header">{day} (Start)</th>
+                <th className="day-header">{day} (End)</th>
+              </React.Fragment>
             ))}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{selectedEmployee.name}</td>
-            {daysOfWeek.slice(0, 3).map(() => (
-              <>
-                <td>
-                  <input type="time" />
-                </td>
-                <td>
-                  <input type="time" />
-                </td>
-              </>
-            ))}
-          </tr>
-          <tr>
-            {daysOfWeek.slice(3, 6).map((day) => (
-              <th key={day}>{day}</th>
-            ))}
-          </tr>
-          <tr>
-            <td>{selectedEmployee.name}</td>
-            {daysOfWeek.slice(3, 6).map(() => (
-              <>
-                <td>
-                  <input type="time" />
-                </td>
-                <td>
-                  <input type="time" />
-                </td>
-              </>
-            ))}
-          </tr>
-          <tr>
-            <th>{daysOfWeek[6]}</th>
-          </tr>
-          <tr>
-            <td>{selectedEmployee.name}</td>
-            <td>
-              <input type="time" />
-            </td>
-            <td>
-              <input type="time" />
-            </td>
-          </tr>
+          {branchEmployees.map((employee) => (
+            <tr key={employee.id} className="employee-row">
+              <td className="employee-name">{employee.name}</td>
+              {daysOfWeek.map((day) => (
+                <React.Fragment key={day}>
+                  <td className="time-entry">
+                    <input type="time" />
+                  </td>
+                  <td className="time-entry">
+                    <input type="time" />
+                  </td>
+                </React.Fragment>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </table>
-      <button type="submit">Save Schedule</button>
+      <button type="submit" className="schedule-submit-button">
+        Save Schedule
+      </button>
     </form>
   );
 };

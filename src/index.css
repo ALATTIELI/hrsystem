@@ -61,10 +61,10 @@ button:hover {
 }
 
 .employee-profile-form {
-  width: 800px; /* Takes up 90% of its container's width */
-  max-width: 1000px; /* Caps the width for larger screens */
+  width: 700px; /* Takes up 90% of its container's width */
+  max-width: 95%; /* Caps the width for larger screens */
   margin: 20px auto; /* Centers the form and adds vertical spacing */
-  padding: 20px;
+  padding: 20px 40px;
   background-color: gray;
   border-radius: 10px;
 }

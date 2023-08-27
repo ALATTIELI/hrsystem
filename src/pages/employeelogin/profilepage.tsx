@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import "./ProfilePage.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { employeesData } from "./employeedata";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { commonButtons, positionButtons } from "./buttonconfig";
 import LeaveRequest from "./forms/leaverequest";
 import SalaryCertificate from "./forms/ salarycertificate";
@@ -24,11 +24,23 @@ function ProfilePage() {
     : undefined;
 
   const [selectedForm, setSelectedForm] = useState<string | null>(null);
-
-  // Commenting out the unused state values:
-  // const [breakStartTime, setBreakStartTime] = useState<Date | null>(null);
-  // const [breakEndTime, setBreakEndTime] = useState<Date | null>(null);
   const [isBreakStarted, setIsBreakStarted] = useState(false);
+  const [showImageUploadPopup, setShowImageUploadPopup] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
+  const [imageSubmissionTimestamp, setImageSubmissionTimestamp] = useState<Date | null>(null);
+  const [breakDuration, setBreakDuration] = useState<number>(0);
+  const [breakInterval, setBreakInterval] = useState<any>(null);
+  const [showClock, setShowClock] = useState(false);
+
+  
+
+  useEffect(() => {
+    const breakStatus = localStorage.getItem("isBreakStarted");
+    if (breakStatus === "true") {
+      setIsBreakStarted(true);
+    }
+  }, []);
 
   const handleButtonClick = (formName: string) => {
     console.log("Button clicked with name:", formName);
@@ -38,28 +50,87 @@ function ProfilePage() {
   const toggleBreak = () => {
     if (!isBreakStarted) {
       handleStartBreak();
+      localStorage.setItem("isBreakStarted", "true");
     } else {
       handleEndBreak();
+      localStorage.removeItem("isBreakStarted");
     }
     setIsBreakStarted(!isBreakStarted);
   };
 
   const handleStartBreak = () => {
     const startTime = new Date();
-    // setBreakStartTime(startTime);
     console.log(`Break started at ${startTime.toLocaleTimeString()}`);
+    
+    // Show the clock
+    setShowClock(true);
+  
+    // Start the break duration counter
+    const interval = setInterval(() => {
+      setBreakDuration((prevDuration) => prevDuration + 1);
+    }, 1000);
+    setBreakInterval(interval);
   };
+  
 
   const handleEndBreak = () => {
     const endTime = new Date();
-    // setBreakEndTime(endTime);
     console.log(`Break ended at ${endTime.toLocaleTimeString()}`);
+  
+    // Stop the break duration counter
+    clearInterval(breakInterval);
+    setBreakInterval(null);
+    
+    // After 5 seconds, hide the clock and reset the time
+    setTimeout(() => {
+      setShowClock(false);
+      setBreakDuration(0);
+    }, 5000);
   };
+  
 
   const handleLogout = () => {
-    console.log(`Employee logged out at ${new Date().toLocaleTimeString()}`);
-    // Here you can also redirect the user to the login page or any other logic for logout
-    // Example: useHistory().push('/login');
+    console.log(
+      `Employee logged out on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`
+    );
+  };
+
+  const handleLogin = () => {
+    const currentDateTime = new Date();
+    console.log(
+      `Employee logged in on ${currentDateTime.toLocaleDateString()} at ${currentDateTime.toLocaleTimeString()}`
+    );
+    setShowImageUploadPopup(true);
+    resetImageState(); // Reset the image state when the user logs in.
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(file);
+        setImagePreviewUrl(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleClose = () => {
+    if (!selectedImage) {
+      alert("Please upload an image before submitting.");
+      return;
+    }
+    // Set the timestamp when the image is submitted
+    setImageSubmissionTimestamp(new Date());
+    console.log("Image uploaded:", selectedImage, imageSubmissionTimestamp);
+    setShowImageUploadPopup(false);
+    resetImageState(); // Reset the image state after submission.
+  };
+
+  const resetImageState = () => {
+    setSelectedImage(null);
+    setImagePreviewUrl(null);
   };
 
   return (
@@ -81,10 +152,17 @@ function ProfilePage() {
         {/* Add Start and End break buttons */}
         <div className="profile-container">
           {/* ... other divs */}
+          <div className="break-duration">
+  {showClock && 
+    `Break Duration: ${Math.floor(breakDuration / 60).toString().padStart(2, '0')}:${(breakDuration % 60).toString().padStart(2, '0')}`
+  }
+</div>
+
           <div className="fixed-buttons-profile">
             <button onClick={toggleBreak}>
               {isBreakStarted ? "End Break" : "Start Break"}
             </button>
+            <button onClick={handleLogin}>Login</button>
             <button onClick={handleLogout}>Logout</button>
           </div>
         </div>
@@ -96,6 +174,14 @@ function ProfilePage() {
         </Link>
       </div>
 
+      {showImageUploadPopup && (
+        <ImageUploadPopup
+          onClose={handleClose}
+          onFileChange={handleFileChange}
+          imagePreviewUrl={imagePreviewUrl}
+        />
+      )}
+
       {/* Content */}
       <div className="content">
         {/* Left side: Buttons */}
@@ -103,7 +189,8 @@ function ProfilePage() {
           {/* Display specific buttons based on employee's position */}
           {selectedEmployee &&
             positionButtons[selectedEmployee.position]?.map((buttonName) => (
-              <button className="button-profile"
+              <button
+                className="button-profile"
                 key={buttonName}
                 onClick={() => handleButtonClick(buttonName)}
               >
@@ -113,7 +200,8 @@ function ProfilePage() {
 
           {/* Display common buttons for all positions */}
           {commonButtons.map((buttonName) => (
-              <button className="button-profile"
+            <button
+              className="button-profile"
               key={buttonName}
               onClick={() => handleButtonClick(buttonName)}
             >
@@ -171,5 +259,43 @@ function ProfilePage() {
     </div>
   );
 }
+const ImageUploadPopup = ({
+  onClose,
+  onFileChange,
+  imagePreviewUrl,
+}: {
+  onClose: () => void;
+  onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  imagePreviewUrl: string | null;
+}) => {
+  return (
+    <div className="image-upload-popup">
+      <h2>Upload Image</h2>
+      <input type="file" accept="image/*" onChange={onFileChange} />
+      {imagePreviewUrl && (
+        <img
+          src={imagePreviewUrl}
+          alt="Selected Preview"
+          style={{ width: "100px", height: "100px", margin: "10px 0" }}
+        />
+      )}
+      <button onClick={onClose}>Submit</button>
+    </div>
+  );
+};
 
 export default ProfilePage;
+//   );
+// }
+
+// export default ProfilePage;
+
+// const ImageUploadPopup = ({ onClose }: { onClose: () => void }) => {
+//   return (
+//       <div className="image-upload-popup">
+//           <h2>Upload Image</h2>
+//           <input type="file" accept="image/*" />
+//           <button onClick={onClose}>Close</button>
+//       </div>
+//   );
+// };
