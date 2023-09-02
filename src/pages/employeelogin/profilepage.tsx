@@ -18,7 +18,7 @@ import OperationManagerChecklist from "./forms/operationmanagerchecklist";
 import EmployeesRating from "./forms/employeesrating";
 import Requests from "./forms/requests";
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleBreakForEmployee } from '../../redux/breakSlice';  // Update the path accordingly
+import { toggleBreakForEmployee } from '../../redux/breakslice';  // Update the path accordingly
 import { RootState } from '../../redux/store';  // Update the path accordingly
 
 
