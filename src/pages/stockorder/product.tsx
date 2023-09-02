@@ -5,8 +5,8 @@ import "./product.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, getCartItemCount } from "./cartslice";
-import { RootState } from "./cartslice";
+import { addToCart, getCartItemCount } from "../../redux/cartslice";
+import { RootState } from "../../redux/cartslice";
 
 interface ProductParams {
   [key: string]: string | undefined;

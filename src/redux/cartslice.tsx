@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { productsData } from "./productdata";
+import { productsData } from "../pages/stockorder/productdata";
 
 interface CartItem {
   id: string;

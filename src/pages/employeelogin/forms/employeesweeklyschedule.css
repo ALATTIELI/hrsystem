@@ -1,57 +1,42 @@
 .schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 2px solid #e0e0e0;
-    margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.schedule-table th, .schedule-table td {
-    padding: 10px 15px;
-    border: 1px solid #e0e0e0;
-}
-
-.schedule-table th {
-    font-weight: bold;
-    text-align: center;
-    background-color: #f5f5f5;
-}
-
+.schedule-table th,
 .schedule-table td {
-    text-align: center;
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+  text-align: center;
 }
 
 .employee-name-header {
-    text-align: left;
-    width: 150px;  /* Adjust width as needed */
+  background-color: #f5f5f5;
+  text-align: left;
 }
 
 .day-header {
-    width: 90px;  /* Adjust width as needed */
+  background-color: #f0f0f0;
 }
 
-.schedule-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+.employee-row .employee-name {
+  background-color: #fafafa;
+  font-weight: bold;
 }
 
-.schedule-submit-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.time-entry input,
+.break-entry input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
-.schedule-submit-button:hover {
-    background-color: #0056b3;
-}
-
-.employee-row {
-    height: 50px;  /* Adjusting the height of each row for more space */
-}
-
-.time-entry {
-    padding: 0 10px;  /* Adding some spacing between time inputs */
+.break-row .break-label {
+  background-color: #e7e7e7;
+  font-weight: bold;
+  text-align: left;
 }

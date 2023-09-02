@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import "./ProfilePage.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { employeesData } from "./employeedata";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { commonButtons, positionButtons } from "./buttonconfig";
 import LeaveRequest from "./forms/leaverequest";
 import SalaryCertificate from "./forms/ salarycertificate";
@@ -16,78 +16,111 @@ import BranchManagerChecklist from "./forms/branchmanagerchecklist";
 import EmployeesWeeklyTask from "./forms/employeesweeklytask";
 import OperationManagerChecklist from "./forms/operationmanagerchecklist";
 import EmployeesRating from "./forms/employeesrating";
+import Requests from "./forms/requests";
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleBreakForEmployee } from '../../redux/breakSlice';  // Update the path accordingly
+import { RootState } from '../../redux/store';  // Update the path accordingly
+
 
 function ProfilePage() {
   const { id } = useParams();
   const selectedEmployee = id
     ? employeesData.find((employee) => employee.id === parseInt(id))
     : undefined;
+  
+  const dispatch = useDispatch();
+  const breakState = useSelector((state: RootState) => state.break);
+
 
   const [selectedForm, setSelectedForm] = useState<string | null>(null);
-  const [isBreakStarted, setIsBreakStarted] = useState(false);
+  // const [breakStatus, setBreakStatus] = useState([
+  //   {
+  //     name: "",
+  //     status: {
+  //       isOnBreak: false,
+  //       startTime: 0,
+  //       endTime: 0,
+  //     },
+  //   },
+  // ]);
+  // console.log(breakState);
+
+  // if (selectedEmployee) {
+  //   const isOnBreakList = breakStatus.some(
+  //     (item) => item.name === selectedEmployee.name
+  //   );
+  //   console.log(
+  //     isOnBreakList
+  //       ? `${selectedEmployee.name} is on the break list.`
+  //       : `${selectedEmployee.name} is not on the break list.`
+  //   );
+  // }
+
+  //search if breakStatus list has an object with the name of the selectedEmployee
+  //if it does, then set the isOnBreak to true
+
   const [showImageUploadPopup, setShowImageUploadPopup] = useState(false);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
-  const [imageSubmissionTimestamp, setImageSubmissionTimestamp] = useState<Date | null>(null);
+  const [imageSubmissionTimestamp, setImageSubmissionTimestamp] =
+    useState<Date | null>(null);
   const [breakDuration, setBreakDuration] = useState<number>(0);
   const [breakInterval, setBreakInterval] = useState<any>(null);
   const [showClock, setShowClock] = useState(false);
 
-  
-
-  useEffect(() => {
-    const breakStatus = localStorage.getItem("isBreakStarted");
-    if (breakStatus === "true") {
-      setIsBreakStarted(true);
-    }
-  }, []);
 
   const handleButtonClick = (formName: string) => {
     console.log("Button clicked with name:", formName);
     setSelectedForm(formName);
   };
 
-  const toggleBreak = () => {
-    if (!isBreakStarted) {
-      handleStartBreak();
-      localStorage.setItem("isBreakStarted", "true");
-    } else {
-      handleEndBreak();
-      localStorage.removeItem("isBreakStarted");
+
+  // const toggleBreakForEmployee = () => {
+  //   const currentTime = new Date().getTime(); // current time in milliseconds
+  //   let updatedStatus = [...breakStatus]; // create a copy of the current breakStatus
+
+  //   // Find the employee in the breakStatus list
+  //   const employeeStatus = updatedStatus.find(
+  //     (item) => item.name === selectedEmployee?.name
+  //   );
+
+  //   if (employeeStatus) {
+  //     if (employeeStatus.status.isOnBreak) {
+  //       employeeStatus.status.isOnBreak = false;
+  //       employeeStatus.status.endTime = currentTime;
+  //     } else {
+  //       employeeStatus.status.isOnBreak = true;
+  //       employeeStatus.status.startTime = currentTime;
+  //     }
+  //   } else {
+  //     // If the employee wasn't in the list, add them
+  //     updatedStatus.push({
+  //       name: selectedEmployee?.name || "",
+  //       status: {
+  //         isOnBreak: true,
+  //         startTime: currentTime,
+  //         endTime: 0,
+  //       },
+  //     });
+  //   }
+
+  //   // Update the state
+  //   setBreakStatus(updatedStatus);
+  // };
+
+  const toggleBreakForEmployeeRedux = () => {
+    if (selectedEmployee) {
+      dispatch(toggleBreakForEmployee(selectedEmployee.name));
     }
-    setIsBreakStarted(!isBreakStarted);
   };
+  const currentEmployeeStatus = breakState.find(
+    (item) => item.name === selectedEmployee?.name
+  );
+  const breakButtonText = currentEmployeeStatus?.status.isOnBreak
+    ? "End Break"
+    : "Start Break";
 
-  const handleStartBreak = () => {
-    const startTime = new Date();
-    console.log(`Break started at ${startTime.toLocaleTimeString()}`);
-    
-    // Show the clock
-    setShowClock(true);
-  
-    // Start the break duration counter
-    const interval = setInterval(() => {
-      setBreakDuration((prevDuration) => prevDuration + 1);
-    }, 1000);
-    setBreakInterval(interval);
-  };
-  
 
-  const handleEndBreak = () => {
-    const endTime = new Date();
-    console.log(`Break ended at ${endTime.toLocaleTimeString()}`);
-  
-    // Stop the break duration counter
-    clearInterval(breakInterval);
-    setBreakInterval(null);
-    
-    // After 5 seconds, hide the clock and reset the time
-    setTimeout(() => {
-      setShowClock(false);
-      setBreakDuration(0);
-    }, 5000);
-  };
-  
 
   const handleLogout = () => {
     console.log(
@@ -153,15 +186,19 @@ function ProfilePage() {
         <div className="profile-container">
           {/* ... other divs */}
           <div className="break-duration">
-  {showClock && 
-    `Break Duration: ${Math.floor(breakDuration / 60).toString().padStart(2, '0')}:${(breakDuration % 60).toString().padStart(2, '0')}`
-  }
-</div>
+            {showClock &&
+              `Break Duration: ${Math.floor(breakDuration / 60)
+                .toString()
+                .padStart(2, "0")}:${(breakDuration % 60)
+                .toString()
+                .padStart(2, "0")}`}
+          </div>
 
           <div className="fixed-buttons-profile">
-            <button onClick={toggleBreak}>
+            {/* <button onClick={toggleBreak}>
               {isBreakStarted ? "End Break" : "Start Break"}
-            </button>
+            </button> */}
+            <button onClick={toggleBreakForEmployeeRedux}>{breakButtonText}</button>
             <button onClick={handleLogin}>Login</button>
             <button onClick={handleLogout}>Logout</button>
           </div>
@@ -252,6 +289,9 @@ function ProfilePage() {
           {selectedForm === "Employees Rating" && selectedEmployee && (
             <EmployeesRating selectedEmployee={selectedEmployee} />
           )}
+          {selectedForm === "Requests" && selectedEmployee && (
+            <Requests selectedEmployee={selectedEmployee} />
+          )}
 
           {/* Add more form components as needed */}
         </div>
@@ -285,17 +325,3 @@ const ImageUploadPopup = ({
 };
 
 export default ProfilePage;
-//   );
-// }
-
-// export default ProfilePage;
-
-// const ImageUploadPopup = ({ onClose }: { onClose: () => void }) => {
-//   return (
-//       <div className="image-upload-popup">
-//           <h2>Upload Image</h2>
-//           <input type="file" accept="image/*" />
-//           <button onClick={onClose}>Close</button>
-//       </div>
-//   );
-// };

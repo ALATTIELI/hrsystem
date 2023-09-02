@@ -20,6 +20,15 @@ interface Props {
   selectedEmployee: Employee;
 }
 
+export const getRequestStatus = () => {
+  // This is mock data. You'd replace this with actual data retrieval logic.
+  return {
+      type: "Appreciation Certificate",
+      status: "Pending", // Replace with actual status
+      time: new Date(), // Replace with actual submission date
+  };
+}
+
 const AppreciationCertificate: React.FC<Props> = ({ selectedEmployee }) => {
   return (
     <form className="employee-profile-form">

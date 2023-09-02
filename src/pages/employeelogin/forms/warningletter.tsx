@@ -36,6 +36,15 @@ const getBranchManagerName = (branch: string) => {
   return branchManager ? branchManager.name : "Unknown";
 };
 
+export const getRequestStatus = () => {
+  // This is mock data. You'd replace this with actual data retrieval logic.
+  return {
+      type: "Warning Letter",
+      status: "Pending", // Replace with actual status
+      time: new Date(), // Replace with actual submission date
+  };
+}
+
 const currentDate = new Date();
 const formattedDate = `${
   currentDate.getMonth() + 1

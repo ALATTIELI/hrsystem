@@ -1,5 +1,6 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, session } from 'electron'
 import path from 'node:path'
+import os  from 'node:os'
 
 // The built directory structure
 //
@@ -43,4 +44,13 @@ app.on('window-all-closed', () => {
   win = null
 })
 
+// on macOS
+const reactDevToolsPath = path.join(
+  os.homedir(),
+  '/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/3.1.1_0'
+)
+
+app.whenReady().then(async () => {
+  await session.defaultSession.loadExtension(reactDevToolsPath)
+})
 app.whenReady().then(createWindow)

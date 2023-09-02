@@ -19,6 +19,15 @@ interface OperationManagerChecklistProps {
   };
 }
 
+export const getRequestStatus = () => {
+  // This is mock data. You'd replace this with actual data retrieval logic.
+  return {
+      type: "Operation Manager Checklist",
+      status: "Pending", // Replace with actual status
+      time: new Date(), // Replace with actual submission date
+  };
+}
+
 const OperationManagerChecklist: React.FC<
   OperationManagerChecklistProps
 > = () => {

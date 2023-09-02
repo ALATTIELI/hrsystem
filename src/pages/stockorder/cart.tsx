@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./cart.css";
-import { clearCart } from "./cartslice"; // Import the action to clear the cart
+import { clearCart } from "../../redux/cartslice"; // Import the action to clear the cart
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, increaseQuantity, decreaseQuantity } from "./cartslice";
+import { removeFromCart, increaseQuantity, decreaseQuantity } from "../../redux/cartslice";
 import { productsData } from "./productdata";
 
 interface CartItem {

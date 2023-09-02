@@ -3,6 +3,7 @@ export const commonButtons = [
   "Salary Certificate",
   "Experience Certificate",
   "Vacation Allowance Request",
+  "Requests",
 ];
 
 export const positionButtons: { [key: string]: string[] } = {

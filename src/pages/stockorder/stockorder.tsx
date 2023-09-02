@@ -13,8 +13,8 @@ import HomeIcon from "@mui/icons-material/Home"; // Import HomeIcon
 import { useDispatch, useSelector } from "react-redux";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"; // Import ShoppingCartIcon
 import { useState } from "react"; // Import useState
-import { addToCart, getCartItemCount } from "./cartslice";
-import { RootState } from "./cartslice";
+import { addToCart, getCartItemCount } from "../../redux/cartslice";
+import { RootState } from "../../redux/cartslice";
 
 function Stockorder() {
   const [searchTerm, setSearchTerm] = useState("");

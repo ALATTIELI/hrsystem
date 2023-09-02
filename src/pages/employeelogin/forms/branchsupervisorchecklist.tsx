@@ -19,6 +19,15 @@ interface BranchSupervisorChecklistProps {
   };
 }
 
+export const getRequestStatus = () => {
+  // This is mock data. You'd replace this with actual data retrieval logic.
+  return {
+      type: "Branch Supervisor Checklist",
+      status: "Pending", // Replace with actual status
+      time: new Date(), // Replace with actual submission date
+  };
+}
+
 const BranchSupervisorChecklist: React.FC<BranchSupervisorChecklistProps> = ({
   selectedEmployee,
 }) => {

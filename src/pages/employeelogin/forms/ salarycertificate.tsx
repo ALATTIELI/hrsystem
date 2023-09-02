@@ -17,6 +17,15 @@ interface SalaryCertificateProps {
   selectedEmployee?: Employee;
 }
 
+export const getRequestStatus = () => {
+  // This is mock data. You'd replace this with actual data retrieval logic.
+  return {
+      type: "Salary Certificate",
+      status: "Pending", // Replace with actual status
+      time: new Date(), // Replace with actual submission date
+  };
+}
+
 const SalaryCertificate: React.FC<SalaryCertificateProps> = ({
   selectedEmployee,
 }) => {
