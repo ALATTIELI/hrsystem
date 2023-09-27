@@ -1,0 +1,93 @@
+/* BranchLogin.css */
+
+/* Loader animation */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Checkmark animation */
+@keyframes draw {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Style for the loader spinner */
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: rotate 1s linear infinite;
+  margin-right: 10px;
+}
+
+/* Style for the checkmark icon */
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4caf50;
+  border-radius: 50%;
+  animation: draw 0.5s ease-in-out 0.5s forwards;
+  margin-right: 10px;
+}
+
+/* Container for the loader or checkmark */
+.result-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Hide the loader or checkmark by default */
+.result-hidden {
+  display: none;
+}
+
+/* Success symbol container */
+.success-container {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: #4caf50; /* Green color */
+  border-radius: 50%; /* Create a circle */
+  text-align: center;
+  line-height: 24px; /* Center the checkmark vertically */
+  color: white; /* Text color */
+  font-size: 18px; /* Adjust the size of the checkmark */
+}
+
+/* Submit button */
+.submit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue color */
+  color: #fff; /* Text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Loading state styles */
+.submit-button.loading {
+  background-color: #ccc; /* Gray color when loading */
+  cursor: not-allowed; /* Disable cursor during loading */
+}
+
+/* Success state styles */
+.submit-button.success {
+  background-color: #4caf50; /* Green color on success */
+}

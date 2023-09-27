@@ -1,10 +1,18 @@
 // src/App.tsx
+import { useDispatch } from "react-redux";
 import "./App.css"; // Import the CSS file
 import { Link } from "react-router-dom";
+import { clearSession } from "./redux/branchslice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(clearSession());
+  };
   return (
     <div className="container">
+      <p onClick={handleLogout}>Branch Logout</p>
       <div className="header">
         <div>
           <img
