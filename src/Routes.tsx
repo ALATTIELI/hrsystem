@@ -38,6 +38,7 @@ const AppLayout: FunctionComponent<AppLayoutProps> = ({ logged }) => {
 function MainRoutes() {
   const dispatch = useDispatch();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const branch = useSelector((state: any) => state.branch);
   const logged = isSessionValid(branch.sessionStart); // Check if the session is valid
 
