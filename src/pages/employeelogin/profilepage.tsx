@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import "./ProfilePage.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { employeesData } from "./employeedata";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { commonButtons, positionButtons } from "./buttonconfig";
 import LeaveRequest from "./forms/leaverequest";
 import SalaryCertificate from "./forms/ salarycertificate";
@@ -17,20 +17,32 @@ import EmployeesWeeklyTask from "./forms/employeesweeklytask";
 import OperationManagerChecklist from "./forms/operationmanagerchecklist";
 import EmployeesRating from "./forms/employeesrating";
 import Requests from "./forms/requests";
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleBreakForEmployee } from '../../redux/breakslice';  // Update the path accordingly
-import { RootState } from '../../redux/store';  // Update the path accordingly
+import { useSelector, useDispatch } from "react-redux";
+import { toggleBreakForEmployee } from "../../redux/breakslice"; // Update the path accordingly
+import { RootState } from "../../redux/store"; // Update the path accordingly
+import { UserDataType, getUserData } from "../../utils/api/auth";
 
+interface ProfilePageParams {
+  id: string;
+}
 
 function ProfilePage() {
-  const { id } = useParams();
-  const selectedEmployee = id
-    ? employeesData.find((employee) => employee.id === parseInt(id))
-    : undefined;
-  
+  const { id } = useParams() as { id: string };
+  // const selectedEmployee = id ? await getUserData(id) : undefined;
+  const [selectedEmployee, setSelectedEmployee] = useState<UserDataType>();
+
+  useEffect(() => {
+    async function getData(id: string) {
+      const response = await getUserData(id);
+      if (response) {
+        setSelectedEmployee(response);
+      }
+    }
+    getData(id);
+  }, [id]);
+
   const dispatch = useDispatch();
   const breakState = useSelector((state: RootState) => state.break);
-
 
   const [selectedForm, setSelectedForm] = useState<string | null>(null);
   // const [breakStatus, setBreakStatus] = useState([
@@ -68,12 +80,10 @@ function ProfilePage() {
   const [breakInterval, setBreakInterval] = useState<any>(null);
   const [showClock, setShowClock] = useState(false);
 
-
   const handleButtonClick = (formName: string) => {
     console.log("Button clicked with name:", formName);
     setSelectedForm(formName);
   };
-
 
   // const toggleBreakForEmployee = () => {
   //   const currentTime = new Date().getTime(); // current time in milliseconds
@@ -119,8 +129,6 @@ function ProfilePage() {
   const breakButtonText = currentEmployeeStatus?.status.isOnBreak
     ? "End Break"
     : "Start Break";
-
-
 
   const handleLogout = () => {
     console.log(
@@ -198,7 +206,9 @@ function ProfilePage() {
             {/* <button onClick={toggleBreak}>
               {isBreakStarted ? "End Break" : "Start Break"}
             </button> */}
-            <button onClick={toggleBreakForEmployeeRedux}>{breakButtonText}</button>
+            <button onClick={toggleBreakForEmployeeRedux}>
+              {breakButtonText}
+            </button>
             <button onClick={handleLogin}>Login</button>
             <button onClick={handleLogout}>Logout</button>
           </div>
