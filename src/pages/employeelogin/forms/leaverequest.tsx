@@ -1,46 +1,53 @@
 import React, { useEffect, useState } from "react";
 import "./LeaveRequest.css";
 import { employeesData } from "../employeedata";
-
-interface Employee {
-  id: number;
-  name: string;
-  position: string;
-  branch: string;
-}
+import { UserDataType } from "../../../utils/api/auth";
 
 interface LeaveRequestProps {
-  selectedEmployee?: Employee;
+  selectedEmployee?: UserDataType;
 }
 
-const getSubstituteEmployees = (currentEmployeeId: number, branch: string) => {
-  return employeesData.filter(
-    (employee) =>
-      employee.id !== currentEmployeeId && employee.branch === branch
-  );
+const getSubstituteEmployees = (currentEmployeeId: string, branch: string) => {
+  // return employeesData.filter(
+  //   (employee) =>
+  //     employee.id !== currentEmployeeId && employee.branch === branch
+  // );
+  const tempEmp: UserDataType = {
+    $id: "6518c9950da49565bd79",
+    name: "Jane Smith",
+    position: "OPERATION MANAGER",
+    photoUrl: "/assets/ven.jpg",
+    username: "jane", // Add username field
+    branch: "MBZ",
+    nationality: "USA",
+    idnumber: 784200012345678,
+    passportnumber: "N123456789",
+    joiningdate: "01/01/2021",
+    salary: 1000,
+  };
+  return [tempEmp];
 };
 
 export const getRequestStatus = () => {
   // This is mock data. You'd replace this with actual data retrieval logic.
   return {
-      type: "Leave Request",
-      status: "Pending", // Replace with actual status
-      time: new Date(), // Replace with actual submission date
+    type: "Leave Request",
+    status: "Pending", // Replace with actual status
+    time: new Date(), // Replace with actual submission date
   };
-}
-
+};
 
 const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
-  const [substituteEmployees, setSubstituteEmployees] = useState<Employee[]>(
-    []
-  );
+  const [substituteEmployees, setSubstituteEmployees] = useState<
+    UserDataType[]
+  >([]);
   const [absenceType, setAbsenceType] = useState<string>("");
   const [submissionDate, setSubmissionDate] = useState<string>("");
 
   useEffect(() => {
     if (selectedEmployee) {
       const substitutes = getSubstituteEmployees(
-        selectedEmployee.id,
+        selectedEmployee.$id,
         selectedEmployee.branch
       );
       setSubstituteEmployees(substitutes);
@@ -112,7 +119,7 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
               onChange={(e) => setSubstitute(e.target.value)}
             >
               {substituteEmployees.map((employee) => (
-                <option key={employee.id} value={employee.name}>
+                <option key={employee.$id} value={employee.name}>
                   {employee.name}
                 </option>
               ))}
