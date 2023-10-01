@@ -1,22 +1,10 @@
 import React, { useState } from "react";
 import { employeesData } from "../employeedata";
 import "./employeesrating.css";
+import { UserDataType } from "../../../utils/api/auth";
 
 interface EmployeesRatingProps {
-  selectedEmployee: {
-    id: number;
-    name: string;
-    position: string;
-    photoUrl: string;
-    username: string;
-    password: string;
-    branch: string;
-    nationality: string;
-    idnumber: string;
-    passportnumber: string;
-    joiningdate: string;
-    salary: string;
-  };
+  selectedEmployee: UserDataType;
 }
 
 interface Rate {

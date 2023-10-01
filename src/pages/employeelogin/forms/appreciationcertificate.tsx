@@ -1,23 +1,10 @@
 import React from "react";
 import "./AppreciationCertificate.css";
+import { UserDataType } from "../../../utils/api/auth";
 
-interface Employee {
-  id: number;
-  name: string;
-  position: string;
-  photoUrl: string;
-  username: string;
-  password: string;
-  branch: string;
-  nationality: string;
-  idnumber: string;
-  passportnumber: string;
-  joiningdate: string;
-  salary: string;
-}
 
 interface Props {
-  selectedEmployee: Employee;
+  selectedEmployee: UserDataType;
 }
 
 export const getRequestStatus = () => {

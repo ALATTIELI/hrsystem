@@ -1,15 +1,11 @@
 import "./employeesweeklyschedule.css";
 import React, { useState } from "react";
 import { employeesData } from "../employeedata"; 
+import { UserDataType } from "../../../utils/api/auth";
 
-interface Employee {
-  id: number;
-  name: string;
-  branch: string; 
-}
 
 interface Props {
-  selectedEmployee: Employee; 
+  selectedEmployee: UserDataType; 
 }
 
 const daysOfWeek = [

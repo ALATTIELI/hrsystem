@@ -9,27 +9,15 @@ import { getRequestStatus as getBranchSupervisorChecklistStatus } from '../forms
 import { getRequestStatus as getBranchManagerChecklistStatus } from '../forms/branchmanagerchecklist';
 import { getRequestStatus as getAppreciationCertificateStatus } from '../forms/appreciationcertificate';
 import { getRequestStatus as getSalaryCertificateStatus } from '../forms/ salarycertificate';
+import { UserDataType } from '../../../utils/api/auth';
 
 
 
 
-interface Employee {
-    id: number;
-    name: string;
-    position: string;
-    photoUrl: string;
-    username: string;
-    password: string;
-    branch: string;
-    nationality: string;
-    idnumber: string;
-    passportnumber: string;
-    joiningdate: string;
-    salary: string;
-  }
+
 
   interface RequestsProps {
-    selectedEmployee?: Employee; 
+    selectedEmployee?: UserDataType; 
 }
 
 interface Request {

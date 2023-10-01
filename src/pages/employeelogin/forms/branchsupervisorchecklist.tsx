@@ -1,22 +1,10 @@
 import React, { useState } from "react";
 import "./branchsupervisorchecklist.css";
 import { employeesData } from "../employeedata";
+import { UserDataType } from "../../../utils/api/auth";
 
 interface BranchSupervisorChecklistProps {
-  selectedEmployee: {
-    id: number;
-    name: string;
-    position: string;
-    photoUrl: string;
-    username: string;
-    password: string;
-    branch: string;
-    nationality: string;
-    idnumber: string;
-    passportnumber: string;
-    joiningdate: string;
-    salary: string;
-  };
+  selectedEmployee: UserDataType;
 }
 
 export const getRequestStatus = () => {

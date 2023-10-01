@@ -1,24 +1,10 @@
 import React from "react";
 import "./warningletter.css";
 import { employeesData } from "../employeedata";
-
-interface Employee {
-  id: number;
-  name: string;
-  position: string;
-  photoUrl: string;
-  username: string;
-  password: string;
-  branch: string;
-  nationality: string;
-  idnumber: string;
-  passportnumber: string;
-  joiningdate: string;
-  salary: string;
-}
+import { UserDataType } from "../../../utils/api/auth";
 
 interface Props {
-  selectedEmployee: Employee;
+  selectedEmployee: UserDataType;
 }
 
 const getSupervisorName = (branch: string) => {

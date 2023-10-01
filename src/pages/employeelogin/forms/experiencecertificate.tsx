@@ -1,16 +1,10 @@
 import React from "react";
 import "./experiencecertificate.css";
+import { UserDataType } from "../../../utils/api/auth";
 
-interface Employee {
-  id: number;
-  name: string;
-  position: string;
-  joiningdate: string;
-  branch: string;
-}
 
 interface ExperienceCertificateProps {
-  selectedEmployee?: Employee;
+  selectedEmployee?: UserDataType;
 }
 
 const today = new Date();

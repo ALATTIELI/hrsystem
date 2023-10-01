@@ -83,6 +83,13 @@ export default function BranchLogin() {
   }
   return (
     <div>
+      <div className="imageee">
+          <img
+            src="/assets/logo1.png"
+            alt="Company Logo"
+            className="company-logo"
+          />
+        </div>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
