@@ -1,16 +1,9 @@
 import React from "react";
 import "./vacationAllowanceRequest.css";
-
-interface Employee {
-  name: string;
-  idnumber: string;
-  branch: string;
-  position: string;
-  nationality: string;
-}
+import { UserDataType } from "../../../utils/api/auth";
 
 interface VacationAllowanceProps {
-  selectedEmployee?: Employee;
+  selectedEmployee?: UserDataType;
 }
 
 export const getRequestStatus = () => {
