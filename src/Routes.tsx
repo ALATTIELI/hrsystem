@@ -19,6 +19,7 @@ import ProfilePage from "./pages/employeelogin/profilepage";
 import BranchLogin from "./pages/branchlogin/BranchLogin";
 import { useDispatch, useSelector } from "react-redux";
 import { clearSession } from "./redux/branchslice";
+import { RootState } from "./redux/store";
 // Import other components for other pages if needed
 
 interface AppLayoutProps {
@@ -39,7 +40,7 @@ function MainRoutes() {
   const dispatch = useDispatch();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const branch = useSelector((state: any) => state.branch);
+  const branch = useSelector((state: RootState) => state.branch);
   const logged = isSessionValid(branch.sessionStart); // Check if the session is valid
 
   function isSessionValid(sessionStart: number) {
