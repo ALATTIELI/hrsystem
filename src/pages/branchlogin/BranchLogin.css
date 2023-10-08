@@ -110,6 +110,6 @@ input[type="password"]:focus {
 }
 
 .company-logo {
-  width: 500px; /* Adjust as needed */
-  height: 450px;
+  /* width: 100%; Adjust as needed (this breaks the styling in the main page)*/ 
+  height: 100%;
 }
