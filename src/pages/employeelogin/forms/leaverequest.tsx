@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./LeaveRequest.css";
 import { employeesData } from "../employeedata";
 import { UserDataType } from "../../../utils/api/auth";
+import { createLeaveRequest } from "../../../utils/api/employeeProfile";
 
 interface LeaveRequestProps {
   selectedEmployee?: UserDataType;
@@ -60,7 +61,7 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
   }, []);
 
   const [reason, setReason] = useState<string>("");
-  const [supervisor, setSupervisor] = useState<string>("Supervisor 1"); // default value
+  const [supervisor, setSupervisor] = useState<string>(""); // default value
   const [substitute, setSubstitute] = useState<string>("");
   const [dateFrom, setDateFrom] = useState<string>("");
   const [dateTo, setDateTo] = useState<string>("");
@@ -75,8 +76,18 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
     console.log("Date Range:", dateFrom, dateTo);
     console.log("Reason:", reason);
     console.log("Submission Date:", new Date().toLocaleString()); // Assuming you want current date & time
-    alert(`Thank you for your request!`);
-
+    // alert(`Thank you for your request!`);
+    const data = {
+      employee_id: selectedEmployee?.$id,
+      employee: selectedEmployee?.name,
+      supervisor: supervisor,
+      substitute: substitute,
+      startDate: dateFrom,
+      endDate: dateTo,
+      reason: reason,
+      absenceType: absenceType,
+    };
+    createLeaveRequest(data);
     // ... log other fields as needed
   };
 
@@ -104,6 +115,7 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
             value={supervisor}
             onChange={(e) => setSupervisor(e.target.value)}
           >
+            <option value="null">CHOOSE A SUPERVISOR</option>
             <option value="supervisor1">Supervisor 1</option>
             <option value="supervisor2">Supervisor 2</option>
             {/* Add more supervisor options as needed */}
@@ -116,8 +128,11 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
             Substitute Employee:
             <select
               value={substitute}
-              onChange={(e) => setSubstitute(e.target.value)}
+              // onChange={(e) => setSubstitute(e.target.value)}
+              onChange={(e) => setSubstitute(e.currentTarget.value)}
             >
+              <option value="null">CHOOSE A SUBSTITUTE</option>
+
               {substituteEmployees.map((employee) => (
                 <option key={employee.$id} value={employee.name}>
                   {employee.name}
@@ -134,6 +149,7 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
             value={absenceType}
             onChange={(e) => setAbsenceType(e.target.value)}
           >
+            <option value="null">CHOOSE AN OPTION</option>
             <option value="sick leave">Sick Leave</option>
             <option value="unpaid leave">Unpaid Leave</option>
             <option value="annual leave">Annual Leave</option>
