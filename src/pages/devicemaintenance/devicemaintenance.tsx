@@ -9,6 +9,7 @@ import HomeIcon from "@mui/icons-material/Home"; // Import HomeIcon
 function devicemaintenance() {
   const [formData, setFormData] = useState({
     customerName: "",
+    EmployeeName: "",
     phoneNumber: "",
     device: "",
     price: "",
@@ -80,6 +81,17 @@ function devicemaintenance() {
       <h1>Device Maintenance</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <div className="form-group">
+            <label htmlFor="employeeName">Employee Name:</label>
+            <input
+              type="text"
+              id="employeeName"
+              name="employeeName"
+              value={formData.customerName}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <label htmlFor="customerName">Customer Name:</label>
           <input
             type="text"
@@ -118,6 +130,16 @@ function devicemaintenance() {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="serialNumber">Serial Number:</label>
+          <input
+            type="text"
+            id="serialNumber"
+            name="serialNumber"
+            value={formData.serialNumber}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="price">Price:</label>
           <input
             type="text"
@@ -133,16 +155,7 @@ function devicemaintenance() {
             Only numbers are allowed.
           </small>
         </div>
-        <div className="form-group">
-          <label htmlFor="serialNumber">Serial Number:</label>
-          <input
-            type="text"
-            id="serialNumber"
-            name="serialNumber"
-            value={formData.serialNumber}
-            onChange={handleChange}
-          />
-        </div>
+
         <div className="form-group">
           <label htmlFor="dateReceived">Date Received:</label>
           <input
@@ -164,8 +177,10 @@ function devicemaintenance() {
             onChange={handleChange}
             required
           >
-            <option value="Repair the device">Repair the device</option>
             <option value="Software">Software</option>
+            <option value="Repair the device">Repair the device</option>
+            <option value="Software">Cleaning the device</option>
+            <option value="Software">Device update</option>
             <option value="Others">Others</option>
           </select>
         </div>

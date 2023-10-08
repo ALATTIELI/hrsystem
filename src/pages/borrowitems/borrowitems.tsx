@@ -21,6 +21,7 @@ function Borrowitems() {
   const [formData, setFormData] = useState({
     sku: "",
     barcode: "",
+    quantity: "",
   });
 
   const { shops } = useShopContext();
@@ -66,22 +67,22 @@ function Borrowitems() {
       <h1>Borrow Items Page</h1>
       <form onSubmit={handleInquire}>
         {/* ... Form fields (SKU, Barcode, and Inquire button) ... */}
+        
         <div className="form-group">
-          <label htmlFor="sku">SKU:</label>
-          <input
-            type="text"
-            id="sku"
-            name="sku"
-            value={formData.sku}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="barcode">Barcode:</label>
+          <label htmlFor="barcode">Barcode / Sku:</label>
           <input
             type="text"
             id="barcode"
             name="barcode"
+            value={formData.barcode}
+            onChange={handleChange}
+          />
+        </div><div className="form-group">
+          <label htmlFor="quantity">Quantity:</label>
+          <input
+            type="text"
+            id="quantity"
+            name="quantity"
             value={formData.barcode}
             onChange={handleChange}
           />

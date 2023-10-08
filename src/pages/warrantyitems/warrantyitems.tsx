@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./warrantyitems.css";
 import HomeIcon from "@mui/icons-material/Home"; // Import HomeIcon
 
-
 function Warrantyitems() {
   const [formData, setFormData] = useState({
     employeeName: "",
@@ -36,6 +35,17 @@ function Warrantyitems() {
       <h1>Warranty Items Page</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <div className="form-group">
+            <label htmlFor="dateReceived">Date Received:</label>
+            <input
+              type="date"
+              id="dateReceived"
+              name="dateReceived"
+              value={formData.dateReceived}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <label htmlFor="employeeName">Employee Name:</label>
           <input
             type="text"
@@ -64,18 +74,6 @@ function Warrantyitems() {
             id="phoneNumber"
             name="phoneNumber"
             value={formData.phoneNumber}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="dateReceived">Date Received:</label>
-          <input
-            type="date"
-            id="dateReceived"
-            name="dateReceived"
-            value={formData.dateReceived}
             onChange={handleChange}
             required
           />
