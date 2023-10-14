@@ -56,5 +56,6 @@ export const employeesData = [
     joiningdate: "01/06/2019",
     salary: "1500 AED",
   },
+  
   // Add more employees here...
 ];

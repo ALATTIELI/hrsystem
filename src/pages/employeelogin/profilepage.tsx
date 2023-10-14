@@ -21,6 +21,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleBreakForEmployee } from "../../redux/breakslice"; // Update the path accordingly
 import { RootState } from "../../redux/store"; // Update the path accordingly
 import { UserDataType, getUserData } from "../../utils/api/auth";
+import NoObjectionCertificate from "./forms/NoObjectionCertificate";
+import IBANRegistration from "./forms/IBANRegistration";
+import MonthlyPerformance from "./forms/MonthlyPerformance";
+import PassportHandover from "./forms/PassportHandover";
+import SupervisorPerformance from "./forms/SupervisorPerformance";
+import EmployeeTransfer from "./forms/EmployeeTransfer";
+import EmploymentCertificate from "./forms/EmploymentCertificate";
+import CompanyPropertyReceipt from "./forms/CompanyPropertyReceipt";
+import DailyTrainingPlan from "./forms/DailyTrainingPlan";
+import DeclarationForm from "./forms/DeclarationForm";
 
 interface ProfilePageParams {
   id: string;
@@ -302,6 +312,37 @@ function ProfilePage() {
           {selectedForm === "Requests" && selectedEmployee && (
             <Requests selectedEmployee={selectedEmployee} />
           )}
+          {selectedForm === "No Objection Certificat" && selectedEmployee &&(
+            <NoObjectionCertificate selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "IBAN Registration" && selectedEmployee &&(
+            <IBANRegistration selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Monthly Performance" && selectedEmployee && (
+            <MonthlyPerformance selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Passport Handover" && selectedEmployee && (
+            <PassportHandover selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Supervisor Performance" && selectedEmployee && (
+            <SupervisorPerformance selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Employee Transfer" && selectedEmployee && (
+            <EmployeeTransfer selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Employment Certificate" && selectedEmployee && (
+            <EmploymentCertificate selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Company Property Receipt" && selectedEmployee && (
+            <CompanyPropertyReceipt selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Daily Training Plan" && selectedEmployee && (
+            <DailyTrainingPlan selectedEmployee={selectedEmployee} />
+          )}
+          {selectedForm === "Declaration Form" && selectedEmployee && (
+            <DeclarationForm selectedEmployee={selectedEmployee} />
+          )}
+
 
           {/* Add more form components as needed */}
         </div>
