@@ -315,27 +315,21 @@ function ProfilePage() {
           {selectedForm === "No Objection Certificat" && selectedEmployee &&(
             <NoObjectionCertificate selectedEmployee={selectedEmployee} />
           )}
-          {selectedForm === "IBAN Registration" && selectedEmployee &&(
-            <IBANRegistration selectedEmployee={selectedEmployee} />
-          )}
+        
           {selectedForm === "Monthly Performance" && selectedEmployee && (
             <MonthlyPerformance selectedEmployee={selectedEmployee} />
           )}
           {selectedForm === "Passport Handover" && selectedEmployee && (
             <PassportHandover selectedEmployee={selectedEmployee} />
           )}
-          {selectedForm === "Supervisor Performance" && selectedEmployee && (
-            <SupervisorPerformance selectedEmployee={selectedEmployee} />
-          )}
+         
           {selectedForm === "Employee Transfer" && selectedEmployee && (
             <EmployeeTransfer selectedEmployee={selectedEmployee} />
           )}
           {selectedForm === "Employment Certificate" && selectedEmployee && (
             <EmploymentCertificate selectedEmployee={selectedEmployee} />
           )}
-          {selectedForm === "Company Property Receipt" && selectedEmployee && (
-            <CompanyPropertyReceipt selectedEmployee={selectedEmployee} />
-          )}
+        
           {selectedForm === "Daily Training Plan" && selectedEmployee && (
             <DailyTrainingPlan selectedEmployee={selectedEmployee} />
           )}

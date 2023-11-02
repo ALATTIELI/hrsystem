@@ -5,15 +5,22 @@ export const commonButtons = [
   "Vacation Allowance Request",
   "Requests",
   "No Objection Certificat",
-  "IBAN Registration",
   "Monthly Performance",
   "Passport Handover",
-  "Supervisor Performance",
   "Employee Transfer",
   "Employment Certificate",
-  "Company Property Receipt",
   "Daily Training Plan",
   "Declaration Form",
+  "Operation Manager Checklist",
+  "Branches Manager Checklist",
+  "Branch Supervisor Checklist",
+  "Warning Letter",
+  "Employees Weekly Schedule",
+  "Employees Weekly Task",
+
+
+
+
 ];
 
 export const positionButtons: { [key: string]: string[] } = {

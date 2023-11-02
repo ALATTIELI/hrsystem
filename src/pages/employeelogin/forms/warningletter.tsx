@@ -88,18 +88,6 @@ const WarningLetter: React.FC<Props> = ({ selectedEmployee }) => {
           </p>
           <div className="signature-block">
             <label>
-              Hr&Administrative:
-              <br />
-              <input type="text" value="Laraine Kris Alcantara" readOnly />
-            </label>
-            <label>
-              Signature:
-              <br />
-              <input type="text" placeholder="Signature" />
-            </label>
-          </div>
-          <div className="signature-block">
-            <label>
               Operation Manager:
               <br />
               <input type="text" value="Awad Jamal Al Awadv" readOnly />
@@ -110,6 +98,19 @@ const WarningLetter: React.FC<Props> = ({ selectedEmployee }) => {
               <input type="text" placeholder="Signature" />
             </label>
           </div>
+          <div className="signature-block">
+            <label>
+              Hr&Administrative:
+              <br />
+              <input type="text" value="Laraine Kris Alcantara" readOnly />
+            </label>
+            <label>
+              Signature:
+              <br />
+              <input type="text" placeholder="Signature" />
+            </label>
+          </div>
+         
           <div className="signature-block">
             <label>
               Branch Manager Name:

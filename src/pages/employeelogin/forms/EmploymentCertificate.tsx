@@ -45,8 +45,8 @@ const EmploymentCertificate: React.FC<EmploymentCertificateProps> = ({
           <p>Hr&Administrative</p>
         </div>
         <div>
-          <p>Abdulmunim Swedan</p>
-          <p>Chief Financial Officer</p>
+          <p>Awad Jamal Al Awad</p>
+          <p>Operation Manager</p>
         </div>
       </div>
     </div>

@@ -1,9 +1,8 @@
 import React from "react";
-import "./vacationAllowanceRequest.css";
 import { UserDataType } from "../../../utils/api/auth";
 
-interface VacationAllowanceProps {
-  selectedEmployee?: UserDataType;
+interface Props {
+  selectedEmployee: UserDataType;
 }
 
 export const getRequestStatus = () => {
@@ -14,56 +13,69 @@ export const getRequestStatus = () => {
       time: new Date(), // Replace with actual submission date
   };
 }
+const currentDate = new Date();
+const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
-const VacationAllowanceRequest: React.FC<VacationAllowanceProps> = ({
-  selectedEmployee,
-}) => {
-  const employee = selectedEmployee;
-
-  if (!employee) {
-    return <p>Employee not found!</p>;
-  }
+const VacationAllowance: React.FC<Props> = ({ selectedEmployee }) => {
 
   return (
-    <form className="employee-profile-form">
-      <div className="vacation-allowance-form">
-        <p className="date">Date: August 02, 2023</p>
-        <h2>Vacation Allowance Dues</h2>
+    <div className="vacation-allowance">
+      <p>{formattedDate}</p>
 
-        <div className="info-pair">
-          <div className="label">Employee Name:</div>
-          <p>{employee.name}</p>
-        </div>
+      <h2 className="text-center-arabic">مستحقات بدل الاجازة</h2>
+      <h2 className="text-center">Vacation allowance dues</h2>
 
-        <div className="info-pair">
-          <div className="label">Identification Number:</div>
-          <p>{employee.idnumber}</p>
-        </div>
+      <h3 className="text-center-arabic">جدول البيانات</h3>
+      <h3 className="text-center">Data table</h3>
 
-        <div className="info-pair">
-          <div className="label">Branch:</div>
-          <p>{employee.branch}</p>
-        </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>Employee Name</td>
+            <td>{selectedEmployee.name}</td>
+            <td>اسم الموظف</td>
+          </tr>
+          <tr>
+            <td>Identification Number</td>
+            <td>{selectedEmployee.idnumber}</td>
+            <td>رقم الهوية</td>
+          </tr>
+          <tr>
+            <td>Workplace</td>
+            <td>MAIN BRANCH & OFFICE</td>
+            <td>مكان العمل</td>
+          </tr>
+          <tr>
+            <td>Job title</td>
+            <td>SALES AND MARKET SALESPERSON</td>
+            <td>المسمى الوظيفي</td>
+          </tr>
+          <tr>
+            <td>Nationality</td>
+            <td>INDIAN</td>
+            <td>الجنسية</td>
+          </tr>
+          <tr>
+            <td>The due date of the vacation allowance salary</td>
+            <td>From October 11, 2022 To October 10, 2023</td>
+            <td>تاريخ استحقاق راتب بدل الاجازة</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <div className="info-pair">
-          <div className="label">Job Title:</div>
-          <p>{employee.position}</p>
-        </div>
+      <p>
+        اقر أنا ، الموقع أدناه / الموقعة ادناه ، باستلام مستحقات بدل إجازة من الكفيل مبلغ وقدره 1000 درهم 
+        <br />
+        I acknowledge, the undersigned / undersigned, acknowledge receipt of my vacation salary from the sponsor.
+      </p>
 
-        <div className="info-pair">
-          <div className="label">Nationality:</div>
-          <p>{employee.nationality}</p>
-        </div>
-
-        <p className="double-gap">
-          I acknowledge, the undersigned/undersigned, acknowledge receipt of my
-          vacation salary from the sponsor.
-        </p>
-
-        <div className="signature">Employee Signature:</div>
+      <div className="signature-block">
+        <label>Signature Employee:</label>
+        <br />
+        <input type="text" placeholder="Signature" />
       </div>
-    </form>
+    </div>
   );
 };
 
-export default VacationAllowanceRequest;
+export default VacationAllowance;

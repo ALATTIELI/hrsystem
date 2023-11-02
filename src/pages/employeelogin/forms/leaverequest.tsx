@@ -93,7 +93,7 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
 
   return (
     <div className="sick-leave-form">
-      <h2>Request Sick Leave</h2>
+      <h2>Request  Leave</h2>
 
       <form className="employee-profile-form" onSubmit={handleSubmit}>
         {/* Employee Name and Position */}
@@ -105,6 +105,10 @@ const LeaveRequest: React.FC<LeaveRequestProps> = ({ selectedEmployee }) => {
           <label>
             Position:
             <input type="text" value={selectedEmployee?.position} readOnly />
+          </label>
+          <label>
+            Employee ID:
+            <input type="text" value={selectedEmployee?.idnumber} readOnly />
           </label>
         </div>
 

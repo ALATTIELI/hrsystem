@@ -1,54 +1,56 @@
-import React from 'react';
+import React from "react";
 
 const NoObjectionCertificate: React.FC = () => {
   return (
-    <div style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
-      <h1>GENTLEMEN\ AL ANSARI EXCHANGE</h1>
-      <h2>السادة المحترمين/األنصاري للصرافة</h2>
-      <p>Date: 28/09/2023</p>
-      <p>التاريخ2023/08/16:</p>
-      <h2>شهـادة عدم ممانعة</h2>
+    <div style={{ textAlign: "center", fontFamily: "Arial, sans-serif" }}>
+      <p>Date: August 23, 2023</p>
       <p>
-        (PRESTIGE ONE MOBILE PHONES - BRANCH) Certifies That Mrs/Mr (OMAR ASHRAF OMAR MOHAMED)
-        Egypt nationality, With Passport no. (A30935344) and Emirates ID (784-1995-8125477-0) is one of our teamwork staff in position of (Shop Assistant). Since 07/10/2023 We have no objection for hem/her to (Transfer him salary in AL HILAL BANK)
+        Employee Name: MOHAMED MOSTAFA ABDELAZIZ ABDELGALIL<br />
+        Nationality: Egyptian<br />
+        ID Number: 784-1996-6463294-2<br />
+        Passport Number: A26599091<br />
+        Joining Date: 20/09/2022<br />
+        Monthly Net Salary in AED: 2000<br />
+        Job Title: Stall And Market Salesperson
+      </p>
+
+      <p>الى من يهمه الأمر</p>
+      <p>To Whom It May Concern</p>
+      <p>
+        نشهد نحن برستيج ون للهواتف المتحركة PRESTIGE ONE MOBILE PHONES
+        بأن الموظف صاحب البيانات المذكورة ادناه يعمل لدينا ولا يزال على رأس عمله:
       </p>
       <p>
-        (بريستيج ون للهواتف المحمولة - فرع)
-        تصادق على أن السيدة / السيد (عدنان نور نور
-        زمير)
-        الجنسية الباكستانية ، مع جواز السفر رقم. (AS1407113)
-        وهوية الإمارات (784-1996-1551797-8) هي واحدة من
-        فريق العمل في موقع (Stall and Market
-        مندوب مبيعات). منذ 01/15/2023 ليس لدينا
-        اعتراضه على (تحويل راتبه في مصرف أبوظبي الإسلامي
-        بنك)
+        Note that we have no objection to him transferring his monthly salary to his account in Abu Dhabi Commercial Bank. This certificate is hereby issued as per the employee's request, without any liability for third party rights.
+      </p>
+
+      <p>Yours sincerely.</p>
+      <p>و تفضلوا بقبول فائق الاحترام و التقدير.</p>
+
+      <p>برستيج ون للهواتف المتحركة</p>
+      <p>PRESTIGE ONE MOBILE PHONES</p>
+
+      <p>
+        علما بأنه لا مانع لدينا من ان يقوم بتحويل راتبه الشهري الى حسابه في بنك ابوظبي التجاري، وقد أعطيت له هذه الشهادة بناء على طلبه دون تحمل أي مسئولية تجاه الغير.
       </p>
       <p>
-        تم منح هذه الشهادة بناءً على طلبه دون أن تتحمل الشركة أي مسؤولية أو التزام من أي نوع تجاه الغير.
+        This certificate is valid for one month from the issue date, and any alteration will void it.
       </p>
-      <h3>No Objection Certificate</h3>
-      <h4>برستيج ون للهواتف المتحركة - فرع</h4>
-      <h4>PRESTIGE ONE MOBILE PHONES – BRANCH</h4>
-      <p>
-        هذه الشهادة صالحة لمدة شهر من تاريخ اصدارها وأي تغيير يطرأ عليها يلغيها.
-      </p>
-      <p>
-        This certificate is valid for one month from the issue date, and any alteration will void it
-      </p>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
-          <p>Abdulmunim Swedan</p>
-          <p>Chief Financial Officer</p>
+          <p>Laraine Kris Alcantara</p>
+          <p>HR & ADMINISTRATIVE</p>
         </div>
         <div>
-          <p>Laraine Alcantara</p>
-          <p>Hr&Adminstrative</p>
+          <p>Mr. Abdulmunim Swedan</p>
+          <p>Chief Financial Officer</p>
         </div>
       </div>
       <p>وثيقة الكترونية معتمدة</p>
       <p>Approved Electronic Document</p>
     </div>
   );
-}
+};
 
 export default NoObjectionCertificate;
